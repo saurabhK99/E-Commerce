@@ -1,9 +1,15 @@
 import React from 'react'
+import Header from './components/Header'
+import Footer from './components/Footer'
+
+import { Route, Switch } from 'react-router-dom'
 
 const App = () => {
   return (
     <>
-      <h1>Hello Bro!</h1>
+      <Header />
+
+      <Footer />
     </>
   )
 }
