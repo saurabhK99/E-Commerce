@@ -1,10 +1,20 @@
-import React from 'react'
-import products from '../products'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
 import './css/ProductScreen.css'
 
 const ProductScreen = ({ match }) => {
-  const pro = products.find((p) => p._id === match.params.id)
+  const [pro, setPro] = useState({})
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const { data } = await axios.get(`/api/products/${match.params.id}`)
+
+      setPro(data)
+    }
+    fetchProduct()
+  }, [match])
+
   return (
     <>
       <div className='productScreenContainer'>
