@@ -1,7 +1,8 @@
 .FooterContainer {
   text-align: center;
   color: whitesmoke;
-  margin-top: 90vh;
+  bottom: 0;
+  width: 100%;
   padding: 1rem 0 5vh 0;
   background-color: var(--grey);
 }
