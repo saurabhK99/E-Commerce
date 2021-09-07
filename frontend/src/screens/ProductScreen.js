@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -8,7 +8,9 @@ import Loading from '../components/Loading'
 
 import './css/ProductScreen.css'
 
-const ProductScreen = ({ match }) => {
+const ProductScreen = ({ history, match }) => {
+    const [qty, setQty] = useState(1)
+
     const dispatch = useDispatch()
     const productDetails = useSelector((s) => s.productDetails)
 
@@ -17,6 +19,10 @@ const ProductScreen = ({ match }) => {
     useEffect(() => {
         dispatch(listProductDetails(match.params.id))
     }, [dispatch, match])
+
+    const addToCartHandler = () => {
+        history.push(`/cart/${match.params.id}?qty=${qty}`)
+    }
 
     return (
         <>
@@ -40,9 +46,32 @@ const ProductScreen = ({ match }) => {
                     <section className='priceContainer'>
                         <span className='block'></span>
                         <strong>{`Price: ${product.price}`}</strong>
-                        <span>{`In-Stock: ${product.countInStock}`}</span>
+                        <span>
+                            {product.countInStock
+                                ? `In-Stock: ${product.countInStock}`
+                                : 'Out of Stock'}
+                        </span>
+                        <span>
+                            Qty:{' '}
+                            <select
+                                name='qty'
+                                id='qty-id'
+                                value={qty}
+                                onChange={(e) => setQty(e.target.value)}
+                            >
+                                {[...Array(product.countInStock).keys()].map(
+                                    (k) => (
+                                        <option key={k + 1} value={k + 1}>
+                                            {k + 1}
+                                        </option>
+                                    )
+                                )}
+                            </select>
+                        </span>
                         <button
                             className='addToCart'
+                            id='cart'
+                            onClick={addToCartHandler}
                             disabled={!product.countInStock}
                         >
                             Add to Cart

@@ -1,68 +1,78 @@
 .productScreenContainer {
-  display: flex;
-  justify-content: space-evenly;
-  min-height: calc(78vh);
-  margin-top: 3em;
+    display: flex;
+    justify-content: space-evenly;
+    min-height: calc(78vh);
+    margin-top: 3em;
 }
 .imgContainer img {
-  border-radius: 5px;
-  box-shadow: 0 8px 16px 0 rgb(0, 0, 0, 0.3);
-  height: 30vw;
-  width: 30vw;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px 0 rgb(0, 0, 0, 0.3);
+    height: 30vw;
+    width: 30vw;
 }
 
 .descContainer {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  height: 30vw;
-  width: 30vw;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 30vw;
+    width: 30vw;
+    align-items: center;
+    justify-content: center;
 }
 
 .descContainer strong {
-  font-size: 1.3em;
-  margin-bottom: 1rem;
+    font-size: 1.3em;
+    margin-bottom: 1rem;
 }
 
 .descContainer p {
-  text-align: center;
+    text-align: center;
 }
 
 .priceContainer {
-  border: 2px solid var(--grey);
-  height: fit-content;
-  width: 30vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    border: 2px solid var(--grey);
+    height: fit-content;
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .priceContainer strong,
 .priceContainer span {
-  margin-bottom: 1.5rem;
-  font-size: 1.5em;
+    margin-bottom: 1.5rem;
+    font-size: 1.5em;
 }
 
 .priceContainer .block {
-  width: 100%;
-  height: 2em;
-  background-color: var(--grey);
+    width: 100%;
+    height: 2em;
+    background-color: var(--grey);
 }
 
 .addToCart {
-  width: 50%;
-  margin-bottom: 1em;
-  font-size: 1em;
-  padding: 0.25em;
-  background-color: var(--grey);
-  border: none;
-  color: whitesmoke;
-  transition: 0.3s;
+    width: 50%;
+    margin-bottom: 1em;
+    font-size: 1em;
+    padding: 0.25em;
+    background-color: var(--grey);
+    border: none;
+    color: whitesmoke;
+    transition: 0.3s;
 }
 
 .addToCart:hover {
-  color: var(--grey);
-  background-color: orange;
+    color: var(--grey);
+    background-color: orange;
+}
+
+.disabled {
+    width: 50%;
+    margin-bottom: 1em;
+    font-size: 1em;
+    padding: 0.25em;
+    background-color: var(--grey);
+    border: none;
+    color: grey;
 }

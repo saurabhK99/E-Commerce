@@ -1,28 +1,28 @@
 .headerContainer {
-  background-color: var(--grey);
-  padding: 1.6em;
+    background-color: var(--grey);
+    padding: 1.6em;
 }
 
 .headerH1 {
-  display: inline-block;
-  color: whitesmoke;
+    display: inline-block;
+    color: whitesmoke;
 }
 
 .headerUl {
-  list-style-type: none;
-  display: flex;
-  float: right;
+    list-style-type: none;
+    display: flex;
+    float: right;
 }
 
 .headerLink {
-  text-decoration: none;
-  margin: 1em;
-  font-size: 1.3em;
-  color: whitesmoke;
-  padding: 1em;
-  border-radius: 5px;
+    text-decoration: none;
+    margin: 1em;
+    font-size: 1.3em;
+    color: whitesmoke;
+    padding: 1em;
+    border-radius: 5px;
 }
 
 .headerLink:hover {
-  border: 1px solid whitesmoke;
+    border: 1px solid whitesmoke;
 }
