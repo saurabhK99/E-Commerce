@@ -1,5 +1,5 @@
 import React from 'react'
-import { addToCart } from '../actions/cartActions'
+import { addToCart, removeFromCart } from '../actions/cartActions'
 
 import { useDispatch } from 'react-redux'
 
@@ -7,6 +7,11 @@ import './css/CartItem.css'
 
 const CartItem = ({ item }) => {
     const dispatch = useDispatch()
+
+    const removeHandler = () => {
+        dispatch(removeFromCart(item.product))
+    }
+
     return (
         <>
             <div className='cartItemContainer'>
@@ -31,6 +36,9 @@ const CartItem = ({ item }) => {
                         ))}
                     </select>
                 </span>
+                <button className='removeItem' onClick={removeHandler}>
+                    remove
+                </button>
             </div>
         </>
     )

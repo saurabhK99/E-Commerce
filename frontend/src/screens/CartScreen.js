@@ -22,7 +22,7 @@ const CartScreen = ({ match, history, location }) => {
 
     return (
         <>
-            {!cartItems ? (
+            {cartItems.length < 1 ? (
                 <strong>Cart Empty!</strong>
             ) : (
                 <div className='cartScreenContainer'>
