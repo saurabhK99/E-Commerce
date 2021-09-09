@@ -10,14 +10,13 @@ const verify = async (req, res, next) => {
         req.headers.authorization.startsWith('Bearer')
     ) {
         let token = req.headers.authorization.split(' ')[1]
-        let decoded = jwt.verify(token, process.env.JWT_SECRET)
-
-        if (!decoded) {
-            res.status(401).json({ error: 'Invalid Token!' })
+        try {
+            let decoded = jwt.verify(token, process.env.JWT_SECRET)
+            req.userId = decoded.id
+        } catch (err) {
+            res.status(401).json({ error: err.message })
             process.exit(1)
         }
-
-        req.userId = decoded.id
     }
     next()
 }
