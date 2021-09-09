@@ -4,7 +4,7 @@ import token from '../config/createToken.js'
 import { json } from 'express'
 
 //@route /api/users
-// @type public
+// @access public
 export const registerUser = async (req, res, next) => {
     try {
         const salt = await bcrypt.genSalt(10)
@@ -26,7 +26,7 @@ export const registerUser = async (req, res, next) => {
 }
 
 //@route /api/users/login
-//@type public
+//@access public
 export const authUser = async (req, res, next) => {
     const { email, password } = req.body
 
@@ -42,6 +42,7 @@ export const authUser = async (req, res, next) => {
 
         if (isAuth) {
             res.status(200).json({
+                _id: isUser._id,
                 name: isUser.name,
                 email: isUser.email,
                 token: token({ id: isUser._id }),
@@ -54,16 +55,39 @@ export const authUser = async (req, res, next) => {
     }
 }
 
-//@route /api/users/profile
-//@type private
+//@route GET /api/users/profile
+//@access private
 export const showUserProfile = async (req, res, next) => {
     try {
         const user = await User.findById(req.userId)
-        const { name, email, isAdmin } = user
+        const { _id, name, email, isAdmin } = user
         res.status(200).json({
+            _id,
             name,
             email,
             isAdmin,
+        })
+    } catch (err) {
+        res.status(404).json({ error: err.message })
+    }
+}
+
+//@route PUT /api/users/profile
+//@access private
+export const updateUserProfile = async (req, res, next) => {
+    try {
+        const user = await User.findById(req.userId)
+        user.email = req.body.email || user.email
+        user.name = req.body.name || user.name
+        user.password =
+            req.body.password &&
+            (bcrypt.hashSync(req.body.password, 10) || user.password)
+
+        res.status(200).json({
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            isAdmin: user.isAdmin,
         })
     } catch (err) {
         res.status(404).json({ error: err.message })
