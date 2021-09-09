@@ -1,6 +1,8 @@
 .headerContainer {
+    position: relative;
     background-color: var(--grey);
     padding: 1.6em;
+    z-index: 1;
 }
 
 .headerH1 {
