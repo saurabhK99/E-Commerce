@@ -9,20 +9,24 @@ import ErrorScreen from './screens/ErrorScreen'
 import CartScreen from './screens/CartScreen'
 import LoginScreen from './screens/LoginScreen'
 import RegisterScreen from './screens/RegisterScreen'
+import ProfileScreen from './screens/ProfileScreen'
 
 const App = () => {
     return (
         <Router>
             <Header />
-            <Switch>
-                <Route path='/' component={HomeScreen} exact />
-                <Route path='/product/:id' component={ProductScreen} />
-                <Route path='/cart/:id?' component={CartScreen} />
-                <Route path='/login' component={LoginScreen} />
-                <Route path='/register' component={RegisterScreen} />
+            <div className='appContainer'>
+                <Switch>
+                    <Route path='/' component={HomeScreen} exact />
+                    <Route path='/product/:id' component={ProductScreen} />
+                    <Route path='/cart/:id?' component={CartScreen} />
+                    <Route path='/login' component={LoginScreen} />
+                    <Route path='/register' component={RegisterScreen} />
+                    <Route path='/profile' component={ProfileScreen} />
 
-                <Route path='*' component={ErrorScreen} />
-            </Switch>
+                    <Route path='*' component={ErrorScreen} />
+                </Switch>
+            </div>
             <Footer />
         </Router>
     )

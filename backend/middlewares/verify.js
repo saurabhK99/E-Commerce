@@ -13,12 +13,11 @@ const verify = async (req, res, next) => {
         try {
             let decoded = jwt.verify(token, process.env.JWT_SECRET)
             req.userId = decoded.id
+            next()
         } catch (err) {
             res.status(401).json({ error: err.message })
-            process.exit(1)
         }
     }
-    next()
 }
 
 export default verify

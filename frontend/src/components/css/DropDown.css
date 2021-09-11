@@ -1,9 +1,10 @@
 .dropDownContainer {
     position: absolute;
-    display: flex;
+    font-size: 1rem;
+    display: none;
     flex-direction: column;
-    top: 4.5rem;
-    right: 3.5rem;
+    top: 4rem;
+    right: 2.5rem;
     border-radius: 5px;
     background-color: rgb(241, 241, 241);
 }
@@ -17,6 +18,11 @@
     font-size: 1.2em;
     color: var(--grey);
     padding: 1em;
+    transition: 0.2s;
+}
+
+.dropDownLink:hover {
+    box-shadow: 0 4px 4px rgb(0, 0, 0, 0.3);
 }
 
 .logout {
@@ -24,4 +30,13 @@
     color: var(--grey);
     padding: 1em;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.logout:hover {
+    box-shadow: 0 4px 4px rgb(0, 0, 0, 0.3);
+}
+
+.dropDownHandler:hover .dropDownContainer {
+    display: flex;
 }

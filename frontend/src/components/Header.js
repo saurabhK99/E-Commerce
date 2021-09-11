@@ -1,23 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { useSelector, useDispatch } from 'react-redux'
-
-import { userLogout } from '../actions/userActions'
+import { useSelector } from 'react-redux'
 
 import DropDown from '../components/DropDown'
 
 import './css/Header.css'
 
 const Header = () => {
-    const dispatch = useDispatch()
     const user = useSelector((s) => s.userLogin)
 
     const { userInfo } = user
-
-    const logoutHandler = () => {
-        dispatch(userLogout())
-    }
 
     return (
         <>

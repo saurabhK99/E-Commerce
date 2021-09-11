@@ -1,0 +1,15 @@
+.messageContainer {
+    text-align: center;
+    border-radius: 5px;
+    padding: 1em;
+}
+
+.error {
+    background-color: rgb(250, 187, 187);
+    color: red;
+}
+
+.success {
+    background-color: rgb(236, 255, 216);
+    color: green;
+}

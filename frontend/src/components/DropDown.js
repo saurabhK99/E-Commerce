@@ -14,26 +14,20 @@ const DropDown = ({ userInfo }) => {
         dispatch(userLogout())
     }
 
-    const dropDownHandler = () => {
-        const list = document.querySelector('.dropDownContainer')
-        if (document.querySelector('.dropDownDisabled'))
-            list.classList.remove('dropDownDisabled')
-        else list.classList.add('dropDownDisabled')
-    }
-
     return (
         <>
-            <span className='headerLink' onClick={dropDownHandler}>
+            <span className='headerLink dropDownHandler'>
                 {userInfo.name}
+
+                <div className='dropDownContainer'>
+                    <Link className='dropDownLink' to='/profile'>
+                        Profile
+                    </Link>
+                    <span className='logout' onClick={logoutHandler}>
+                        Logout
+                    </span>
+                </div>
             </span>
-            <div className='dropDownContainer dropDownDisabled'>
-                <Link className='dropDownLink' to='/profile'>
-                    Profile
-                </Link>
-                <span className='logout' onClick={logoutHandler}>
-                    Logout
-                </span>
-            </div>
         </>
     )
 }

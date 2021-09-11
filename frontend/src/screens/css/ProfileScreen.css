@@ -1,0 +1,32 @@
+.updateDisabled {
+    display: none;
+}
+
+.userProfileContainer {
+    position: absolute;
+    right: 2em;
+    width: 15vw;
+}
+
+.userForm {
+    width: 15vw;
+}
+
+.toggleUpdateButton {
+    margin: 1em 2.5em 0 0;
+    font-size: 1rem;
+    background-color: var(--grey);
+    color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+    height: 3rem;
+    transition: 0.3s;
+    padding: 1em;
+
+    float: right;
+}
+
+.toggleUpdateButton:hover {
+    background-color: orange;
+    color: var(--grey);
+}

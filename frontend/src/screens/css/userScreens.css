@@ -1,0 +1,62 @@
+.userContainer {
+    width: fit-content;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgb(0, 0, 0, 0.2);
+    text-align: center;
+    margin-top: 10vh;
+    padding: 3em 4em;
+    transition: 0.3s;
+}
+
+.userContainer:hover {
+    box-shadow: 0 16px 32px rgb(0, 0, 0, 0.2);
+}
+
+.userContainer:hover .userPageHeading {
+    top: -2px;
+    color: orange;
+}
+
+.userForm {
+    display: flex;
+    flex-direction: column;
+    margin: 2em auto;
+    width: 40vw;
+}
+
+input {
+    text-align: center;
+    margin-bottom: 2em;
+    height: 2.2rem;
+    font-size: 1em;
+    border-radius: 3px;
+    border-style: groove;
+}
+
+.switchLink {
+    float: right;
+}
+
+.userPageHeading {
+    position: relative;
+    top: 0;
+    font-size: 2em;
+    font-variant: small-caps;
+    transition: 0.3s;
+}
+
+.userActionButton {
+    font-size: 1.3rem;
+    background-color: var(--grey);
+    color: whitesmoke;
+    border: none;
+    height: 3rem;
+    transition: 0.3s;
+}
+
+.userActionButton:hover {
+    background-color: orange;
+    color: var(--grey);
+    border-radius: 5px;
+}

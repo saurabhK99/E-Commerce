@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+
 import { useDispatch, useSelector } from 'react-redux'
 
 import { userLogin } from '../actions/userActions'
@@ -27,28 +29,36 @@ const LoginScreen = ({ location, history }) => {
     }
 
     return (
-        <>
-            User Login
+        <div className='userContainer'>
+            <span className='userPageHeading'>User Login</span>
             {loading && <Loading />}
             {error && <Message>{error}</Message>}
-            <form onSubmit={submitHandler}>
+            <form className='userForm' onSubmit={submitHandler}>
                 <input
                     type='text'
                     id='email'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    placeholder='E-Mail Address'
                 />
-                <label htmlFor='email'>E-Mail: </label>
+
                 <input
-                    type='text'
+                    type='password'
                     id='pass'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    placeholder='Password'
                 />
-                <label htmlFor='pass'>Password: </label>
-                <input type='submit' value='Login' />
+                <input
+                    className='userActionButton'
+                    type='submit'
+                    value='SignIn'
+                />
             </form>
-        </>
+            <Link className='switchLink' to='/register'>
+                New User? SignUp
+            </Link>
+        </div>
     )
 }
 

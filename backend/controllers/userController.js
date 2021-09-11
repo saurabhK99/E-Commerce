@@ -17,11 +17,10 @@ export const registerUser = async (req, res, next) => {
         const addedUser = await User.create(newUser)
 
         if (addedUser) {
-            res.status(201).json({ success: 'User Created!' })
+            res.status(201).json({ success: 'Registration Successful!' })
         }
     } catch (err) {
         res.status(404).json({ error: err.message })
-        // process.exit(1)
     }
 }
 
@@ -80,14 +79,13 @@ export const updateUserProfile = async (req, res, next) => {
         user.email = req.body.email || user.email
         user.name = req.body.name || user.name
         user.password =
-            req.body.password &&
-            (bcrypt.hashSync(req.body.password, 10) || user.password)
+            (req.body.password && bcrypt.hashSync(req.body.password, 10)) ||
+            user.password
+
+        await user.save()
 
         res.status(200).json({
-            _id: user._id,
-            name: user.name,
-            email: user.email,
-            isAdmin: user.isAdmin,
+            success: 'Update Successful! Login again to reflect changes',
         })
     } catch (err) {
         res.status(404).json({ error: err.message })
