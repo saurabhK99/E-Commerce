@@ -1,4 +1,7 @@
 import {
+    USER_LIST_FAIL,
+    USER_LIST_REQUEST,
+    USER_LIST_SUCCESS,
     USER_LOGIN_FAIL,
     USER_LOGIN_REQUEST,
     USER_LOGIN_SUCCESS,
@@ -13,6 +16,9 @@ import {
     USER_REGISTRATION_FAIL,
     USER_REGISTRATION_REQUEST,
     USER_REGISTRATION_SUCCESS,
+    USER_REMOVE_FAIL,
+    USER_REMOVE_REQUEST,
+    USER_REMOVE_SUCCESS,
 } from '../constants/userConstants'
 
 export const userRgistrationReducer = (state = { status: {} }, action) => {
@@ -78,6 +84,38 @@ export const userProfileUpdateReducer = (state = { status: null }, action) => {
             return { loading: false, status: action.payload }
 
         case USER_PROFILE_UPDATE_FAIL:
+            return { loading: false, error: action.payload }
+
+        default:
+            return { ...state }
+    }
+}
+
+export const usersGetListReducer = (state = { usersList: [] }, action) => {
+    switch (action.type) {
+        case USER_LIST_REQUEST:
+            return { loading: true }
+
+        case USER_LIST_SUCCESS:
+            return { loading: false, usersList: action.payload }
+
+        case USER_LIST_FAIL:
+            return { loading: false, error: action.payload }
+
+        default:
+            return { ...state }
+    }
+}
+
+export const userRemoveReducer = (state = { status: {} }, action) => {
+    switch (action.type) {
+        case USER_REMOVE_REQUEST:
+            return { loading: true }
+
+        case USER_REMOVE_SUCCESS:
+            return { loading: false, status: action.payload }
+
+        case USER_REMOVE_FAIL:
             return { loading: false, error: action.payload }
 
         default:

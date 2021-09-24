@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 
 import './css/CartItem.css'
 
-const CartItem = ({ item }) => {
+const CartItem = ({ item, disable }) => {
     const dispatch = useDispatch()
 
     const removeHandler = () => {
@@ -36,7 +36,10 @@ const CartItem = ({ item }) => {
                         ))}
                     </select>
                 </span>
-                <button className='removeItem' onClick={removeHandler}>
+                <button
+                    className={`removeItem ${disable}`}
+                    onClick={removeHandler}
+                >
                     remove
                 </button>
             </div>

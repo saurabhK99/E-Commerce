@@ -20,6 +20,10 @@ const CartScreen = ({ match, history, location }) => {
 
     const { cartItems } = useSelector((state) => state.cart)
 
+    const checkoutHandler = () => {
+        history.push('/login?redirect=order-summary')
+    }
+
     return (
         <>
             {cartItems.length < 1 ? (
@@ -45,7 +49,9 @@ const CartScreen = ({ match, history, location }) => {
                                 0
                             )}
                         </strong>
-                        <button className='checkout'>Check-Out</button>
+                        <button className='checkout' onClick={checkoutHandler}>
+                            Check-Out
+                        </button>
                     </section>
                 </div>
             )}

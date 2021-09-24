@@ -47,23 +47,29 @@ const RegisterScreen = () => {
             <form className='userForm' onSubmit={submitHandler}>
                 <input
                     type='text'
+                    className='userInput'
                     value={uname}
                     onChange={(e) => setUname(e.target.value)}
                     placeholder='Full Name'
+                    required
                 />
 
                 <input
-                    type='text'
+                    type='email'
+                    className='userInput'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder='E-Mail Address'
+                    required
                 />
 
                 <input
                     type='password'
+                    className='userInput'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder='Password'
+                    required
                 />
                 <input
                     type='submit'

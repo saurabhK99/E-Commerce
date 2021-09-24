@@ -4,8 +4,10 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { userShowProfile, userUpdateProfile } from '../actions/userActions'
 
-import Loading from '../components/Loading'
+import { getAllOrder } from '../actions/orderActions'
+
 import Message from '../components/Message'
+import UserOrderedItem from '../components/UserOrderedItem'
 
 import './css/ProfileScreen.css'
 
@@ -16,12 +18,15 @@ const ProfileScreen = () => {
     const dispatch = useDispatch()
 
     const userProfile = useSelector((s) => s.userProfile)
+    const orders = useSelector((s) => s.orders.orders)
 
-    const { loading, error, profile } = userProfile
+    const { profile } = userProfile
 
     useEffect(() => {
-        if (!profile) dispatch(userShowProfile())
-        else {
+        if (!profile) {
+            dispatch(userShowProfile())
+            dispatch(getAllOrder())
+        } else {
             setUname(profile.name)
             setEmail(profile.email)
         }
@@ -56,8 +61,8 @@ const ProfileScreen = () => {
 
     return (
         <>
-            {loading && <Loading />}
-            {error && <Message>{error}</Message>}
+            <UserOrderedItem orders={orders} />
+
             <button
                 className='toggleUpdateButton'
                 onClick={updateContainerHandler}
@@ -77,26 +82,33 @@ const ProfileScreen = () => {
                     </Message>
                 )}
 
-                <form className='userForm' onSubmit={updateFormHandler}>
+                <form
+                    className='userForm userProfileForm'
+                    onSubmit={updateFormHandler}
+                >
                     <input
                         type='text'
+                        className='userInput'
                         value={uname}
                         onChange={(e) => setUname(e.target.value)}
                         placeholder='Full Name'
                     />
                     <input
                         type='text'
+                        className='userInput'
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder='E-Mail Address'
                     />
                     <input
                         type='password'
+                        className='userInput'
                         id='npass'
                         placeholder='New Password'
                     />
                     <input
                         type='password'
+                        className='userInput'
                         id='cpass'
                         placeholder='Confirm Password'
                     />

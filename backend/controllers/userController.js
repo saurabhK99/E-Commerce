@@ -35,7 +35,7 @@ export const authUser = async (req, res, next) => {
         if (!isUser) {
             res.status(400)
             res.json({ error: 'User not found!' })
-            process.exit(1)
+            return
         }
         const isAuth = await bcrypt.compare(password, isUser.password)
 
@@ -44,6 +44,8 @@ export const authUser = async (req, res, next) => {
                 _id: isUser._id,
                 name: isUser.name,
                 email: isUser.email,
+                admin: isUser.isAdmin,
+                shippingAddress: isUser.shippingAddress,
                 token: token({ id: isUser._id }),
             })
         } else {
@@ -59,7 +61,7 @@ export const authUser = async (req, res, next) => {
 export const showUserProfile = async (req, res, next) => {
     try {
         const user = await User.findById(req.userId)
-        const { _id, name, email, isAdmin } = user
+        const { _id, name, email, isAdmin, shippingAddress } = user
         res.status(200).json({
             _id,
             name,
@@ -81,12 +83,36 @@ export const updateUserProfile = async (req, res, next) => {
         user.password =
             (req.body.password && bcrypt.hashSync(req.body.password, 10)) ||
             user.password
+        user.shippingAddress = req.body.shippingAddress || user.shippingAddress
 
         await user.save()
 
         res.status(200).json({
             success: 'Update Successful! Login again to reflect changes',
         })
+    } catch (err) {
+        res.status(404).json({ error: err.message })
+    }
+}
+
+//@route GET /api/users/admin
+//@access private
+export const getAllUsers = async (req, res) => {
+    try {
+        const users = await User.find().select('-password')
+        res.status(200).json(users)
+    } catch (err) {
+        res.status(404).json({ error: err.message })
+    }
+}
+
+//@route DELETE /api/users/admin/remove
+//@access private
+export const removeUser = async (req, res) => {
+    try {
+        const user = await User.findById(req.body.id)
+        await user.remove()
+        res.status(200).json({ success: 'User Removed!' })
     } catch (err) {
         res.status(404).json({ error: err.message })
     }

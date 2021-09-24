@@ -32,10 +32,11 @@ const LoginScreen = ({ location, history }) => {
         <div className='userContainer'>
             <span className='userPageHeading'>User Login</span>
             {loading && <Loading />}
-            {error && <Message>{error}</Message>}
+            {error && <Message type='error'>{error}</Message>}
             <form className='userForm' onSubmit={submitHandler}>
                 <input
                     type='text'
+                    className='userInput'
                     id='email'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -44,6 +45,7 @@ const LoginScreen = ({ location, history }) => {
 
                 <input
                     type='password'
+                    className='userInput'
                     id='pass'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}

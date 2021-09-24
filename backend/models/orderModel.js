@@ -7,10 +7,17 @@ const orderSchema = mongoose.Schema(
             required: true,
             ref: 'User',
         },
+
+        razorpayOrderId: {
+            type: String,
+            required: true,
+            default: 'N/A',
+        },
+
         orderItems: [
             {
                 name: { type: String, required: true },
-                quantity: { type: Number, required: true, default: 0 },
+                qty: { type: Number, required: true, default: 0 },
                 image: { type: String, required: true },
                 price: { type: Number, required: true, default: 0 },
                 product: {
@@ -23,18 +30,14 @@ const orderSchema = mongoose.Schema(
         shippingAddress: {
             address: { type: String, required: true },
             city: { type: String, required: true },
+            state: { type: String, required: true },
             postalCode: { type: Number, required: true },
-            country: { type: String, required: true },
         },
-        paymentMethod: {
-            type: String,
+
+        itemsPrice: {
+            type: Number,
             required: true,
-        },
-        paymentResult: {
-            id: { type: String, required: true },
-            status: { type: String, required: true },
-            update_time: { type: String, required: true },
-            email_address: { type: String, required: true },
+            default: 0,
         },
         taxPrice: {
             type: Number,
@@ -57,18 +60,15 @@ const orderSchema = mongoose.Schema(
             required: true,
             default: false,
         },
-        paidAt: {
-            type: Date,
-            required: true,
-        },
+
         isDelivered: {
             type: Boolean,
             required: true,
             default: false,
         },
+
         deliveredAt: {
             type: Date,
-            required: true,
         },
     },
     {

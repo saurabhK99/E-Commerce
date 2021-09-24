@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 import DropDown from '../components/DropDown'
 
 import './css/Header.css'
+import AdminPanel from './AdminPanel'
 
 const Header = () => {
     const user = useSelector((s) => s.userLogin)
@@ -25,6 +26,7 @@ const Header = () => {
                         </Link>
                     </li>
 
+                    <li>{userInfo && userInfo.admin && <AdminPanel />}</li>
                     <li>
                         {!userInfo && (
                             <Link className='headerLink' to='/login'>

@@ -10,6 +10,11 @@ import CartScreen from './screens/CartScreen'
 import LoginScreen from './screens/LoginScreen'
 import RegisterScreen from './screens/RegisterScreen'
 import ProfileScreen from './screens/ProfileScreen'
+import OrderSummaryScreen from './screens/OrderSummaryScreen'
+import PaymentSuccessScreen from './screens/PaymentSuccessScreen'
+import OrderDetailsScreen from './screens/OrderDetailsScreen'
+import UserListScreen from './screens/UserListScreen'
+import ProductListScreen from './screens/ProductListScreen'
 
 const App = () => {
     return (
@@ -23,6 +28,20 @@ const App = () => {
                     <Route path='/login' component={LoginScreen} />
                     <Route path='/register' component={RegisterScreen} />
                     <Route path='/profile' component={ProfileScreen} />
+                    <Route
+                        path='/order-summary'
+                        component={OrderSummaryScreen}
+                    />
+                    <Route
+                        path='/payment-success'
+                        component={PaymentSuccessScreen}
+                    />
+                    <Route path='/order/:id' component={OrderDetailsScreen} />
+                    <Route path='/admin/users' component={UserListScreen} />
+                    <Route
+                        path='/admin/products'
+                        component={ProductListScreen}
+                    />
 
                     <Route path='*' component={ErrorScreen} />
                 </Switch>

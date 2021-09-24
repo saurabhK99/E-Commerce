@@ -14,6 +14,12 @@ import {
     USER_REGISTRATION_REQUEST,
     USER_REGISTRATION_SUCCESS,
     USER_REGISTRATION_FAIL,
+    USER_LIST_REQUEST,
+    USER_LIST_SUCCESS,
+    USER_LIST_FAIL,
+    USER_REMOVE_FAIL,
+    USER_REMOVE_REQUEST,
+    USER_REMOVE_SUCCESS,
 } from '../constants/userConstants'
 
 export const userRegistration = (registerBody) => async (dispatch) => {
@@ -70,7 +76,7 @@ export const userLogin = (email, password) => async (dispatch) => {
     }
 }
 
-export const userLogout = () => async (dispatch, setState) => {
+export const userLogout = () => async (dispatch) => {
     dispatch({ type: USER_LOGOUT })
     dispatch({ type: USER_PROFILE_LOGOUT })
     localStorage.removeItem('userInfo')
@@ -106,6 +112,7 @@ export const userUpdateProfile = (updateBody) => async (dispatch, getState) => {
 
     const config = {
         headers: {
+            'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,
         },
     }
@@ -123,6 +130,58 @@ export const userUpdateProfile = (updateBody) => async (dispatch, getState) => {
     } catch (err) {
         dispatch({
             type: USER_PROFILE_UPDATE_FAIL,
+            payload: err.response ? err.response.data.error : err.message,
+        })
+    }
+}
+
+export const getUsersList = () => async (dispatch, getState) => {
+    const token =
+        getState().userLogin.userInfo && getState().userLogin.userInfo.token
+
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    }
+
+    try {
+        dispatch({ type: USER_LIST_REQUEST })
+
+        const { data } = await axios.get('/api/users/admin', config)
+
+        dispatch({ type: USER_LIST_SUCCESS, payload: data })
+    } catch (err) {
+        dispatch({
+            type: USER_LIST_FAIL,
+            payload: err.response ? err.response.data.error : err.message,
+        })
+    }
+}
+
+export const userRemove = (userId) => async (dispatch, getState) => {
+    const token =
+        getState().userLogin.userInfo && getState().userLogin.userInfo.token
+
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        },
+        data: {
+            id: userId,
+        },
+    }
+
+    try {
+        dispatch({ type: USER_REMOVE_REQUEST })
+
+        const { data } = await axios.delete('/api/users/admin', config)
+
+        dispatch({ type: USER_REMOVE_SUCCESS, payload: data })
+    } catch (err) {
+        dispatch({
+            type: USER_REMOVE_FAIL,
             payload: err.response ? err.response.data.error : err.message,
         })
     }

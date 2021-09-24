@@ -16,6 +16,31 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet"> 
 
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+      var options = {
+	       "key": "rzp_test_JaAmveBrrhzK1D", 
+	       "amount": "", 
+	       "currency": "INR",
+	       "name": "E-Commerce",
+	       "description": "E-Commerce Website",
+	        "image": "/images/logo.png",
+	       "order_id": "",  
+	       "handler": function (response){
+	           console.log(response)
+	           alert("This step of Payment Succeeded");
+	       },
+	       "prefill": {},
+	      "notes" : {
+	         "desc":"Twinke twinkle little star"
+	       }, 
+	       "theme": {
+	           "color": "#2300a3"
+	       }
+	   };
+
+    </script>
+
     <title>E-Commerce</title>
   </head>
   <body>

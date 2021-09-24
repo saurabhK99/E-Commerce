@@ -35,6 +35,11 @@
     padding: 0.5em;
     margin: 1rem;
     width: 60%;
+    transition: 0.3s;
+}
+.checkout:hover {
+    background-color: orange;
+    color: var(--grey);
 }
 
 .block {

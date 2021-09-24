@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import { userLogout } from '../actions/userActions'
 
@@ -9,9 +9,11 @@ import './css/DropDown.css'
 
 const DropDown = ({ userInfo }) => {
     const dispatch = useDispatch()
+    const history = useHistory()
 
     const logoutHandler = () => {
         dispatch(userLogout())
+        history.push('/')
     }
 
     return (
