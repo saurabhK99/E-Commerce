@@ -7,7 +7,9 @@ import Loading from '../components/Loading'
 import Message from '../components/Message'
 import { getProductslist } from '../actions/productActions'
 
-const ProductListScreen = () => {
+import './css/ProductListScreen.css'
+
+const ProductListScreen = ({ history }) => {
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -30,6 +32,13 @@ const ProductListScreen = () => {
                         {productsList.map((product) => (
                             <ProductPanel key={product._id} info={product} />
                         ))}
+
+                        <button
+                            className='addProductButton'
+                            onClick={() => history.push('/admin/add-product')}
+                        >
+                            ADD NEW
+                        </button>
                     </div>
                 )
             )}

@@ -7,7 +7,7 @@ import './css/ProductPanel.css'
 const ProductPanel = ({ info }) => {
     const dispatch = useDispatch()
 
-    const deleteUserHandler = (e) => {
+    const deleteProductHandler = (e) => {
         e.preventDefault()
 
         dispatch(removeProduct(info._id))
@@ -23,15 +23,13 @@ const ProductPanel = ({ info }) => {
                     alt='product '
                 />
             </span>
-            <span className='poductPanelName' style={{ flex: '0 0 10%' }}>
-                {info.name}
-            </span>
+            <span style={{ flex: '0 0 15%' }}>{info.name}</span>
 
-            <span className='poductPanelCol'>&#8377; {info.price}</span>
-            <span className='poductPanelCol'>Qty: {info.countInStock}</span>
+            <span>&#8377; {info.price}</span>
+            <span>Qty: {info.countInStock}</span>
 
-            <span className='poductPanelCol'>
-                <button className='deleteUser' onClick={deleteUserHandler}>
+            <span>
+                <button className='deleteButton' onClick={deleteProductHandler}>
                     Delete
                 </button>
             </span>

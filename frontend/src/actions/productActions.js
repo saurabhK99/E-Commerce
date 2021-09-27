@@ -1,6 +1,9 @@
 import axios from 'axios'
 
 import {
+    PRODUCT_ADD_FAIL,
+    PRODUCT_ADD_REQUEST,
+    PRODUCT_ADD_SUCCESS,
     PRODUCT_DETAILS_FAIL,
     PRODUCT_DETAILS_REQUEST,
     PRODUCT_DETAILS_SUCCESS,
@@ -73,5 +76,28 @@ export const removeProduct = (productId) => async (dispatch, getState) => {
         dispatch({ type: PRODUCT_REMOVE_SUCCESS, payload: data })
     } catch (err) {
         dispatch({ type: PRODUCT_REMOVE_FAIL, payload: err.message })
+    }
+}
+
+export const addProduct = (productDetails) => async (dispatch, getState) => {
+    const token =
+        getState().userLogin.userInfo && getState().userLogin.userInfo.token
+
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        },
+    }
+    try {
+        dispatch({ type: PRODUCT_ADD_REQUEST })
+        const { data } = await axios.post(
+            '/api/products/admin',
+            productDetails,
+            config
+        )
+        dispatch({ type: PRODUCT_ADD_SUCCESS, payload: data })
+    } catch (err) {
+        dispatch({ type: PRODUCT_ADD_FAIL, payload: err.message })
     }
 }

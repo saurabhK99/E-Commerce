@@ -15,6 +15,7 @@ import PaymentSuccessScreen from './screens/PaymentSuccessScreen'
 import OrderDetailsScreen from './screens/OrderDetailsScreen'
 import UserListScreen from './screens/UserListScreen'
 import ProductListScreen from './screens/ProductListScreen'
+import AddProductScreen from './screens/AddProductScreen'
 
 const App = () => {
     return (
@@ -41,6 +42,10 @@ const App = () => {
                     <Route
                         path='/admin/products'
                         component={ProductListScreen}
+                    />
+                    <Route
+                        path='/admin/add-product'
+                        component={AddProductScreen}
                     />
 
                     <Route path='*' component={ErrorScreen} />

@@ -1,4 +1,7 @@
 import {
+    PRODUCT_ADD_FAIL,
+    PRODUCT_ADD_REQUEST,
+    PRODUCT_ADD_SUCCESS,
     PRODUCT_DETAILS_FAIL,
     PRODUCT_DETAILS_REQUEST,
     PRODUCT_DETAILS_SUCCESS,
@@ -64,15 +67,31 @@ export const productsGetListReducer = (
     }
 }
 
-export const productRemoveReducer = (state = { status: [] }, action) => {
+export const productRemoveReducer = (state = { status: {} }, action) => {
     switch (action.type) {
         case PRODUCT_REMOVE_REQUEST:
             return { loading: true, ...state }
 
         case PRODUCT_REMOVE_SUCCESS:
-            return { loading: false, productsList: action.payload }
+            return { loading: false, status: action.payload }
 
         case PRODUCT_REMOVE_FAIL:
+            return { loading: false, error: action.payload }
+
+        default:
+            return state
+    }
+}
+
+export const productAddReducer = (state = { status: {} }, action) => {
+    switch (action.type) {
+        case PRODUCT_ADD_REQUEST:
+            return { loading: true, ...state }
+
+        case PRODUCT_ADD_SUCCESS:
+            return { loading: false, status: action.payload }
+
+        case PRODUCT_ADD_FAIL:
             return { loading: false, error: action.payload }
 
         default:

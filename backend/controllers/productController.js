@@ -34,4 +34,13 @@ const removeProduct = async (req, res) => {
     }
 }
 
-export { getAllProducts, getProductById, removeProduct }
+const addProduct = async (req, res) => {
+    try {
+        const product = await Product.create(req.body)
+        await product.save()
+        res.status(200).json({ success: 'Product Added!' })
+    } catch (err) {
+        res.status(404).json({ error: err.message })
+    }
+}
+export { getAllProducts, getProductById, removeProduct, addProduct }
