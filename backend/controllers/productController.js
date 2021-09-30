@@ -1,8 +1,19 @@
 import Product from '../models/productModel.js'
 
 const getAllProducts = async (req, res) => {
+    let filter = {}
+
+    if (req.query.filter) {
+        filter = {
+            name: {
+                $regex: req.query.filter,
+                $options: 'i',
+            },
+        }
+    }
+
     try {
-        const products = await Product.find()
+        const products = await Product.find(filter)
         res.status(200).json(products)
     } catch (err) {
         res.status(404).json({ error: err.message })
@@ -43,4 +54,19 @@ const addProduct = async (req, res) => {
         res.status(404).json({ error: err.message })
     }
 }
-export { getAllProducts, getProductById, removeProduct, addProduct }
+
+const addReview = async (req, res) => {
+    try {
+        const product = await Product.findById(req.body.productId)
+
+        product.reviews = [...product.reviews, req.body.review]
+
+        await product.save()
+
+        res.json({ success: 'Review Added!' })
+    } catch (err) {
+        res.json({ error: err.message })
+    }
+}
+
+export { getAllProducts, getProductById, removeProduct, addProduct, addReview }

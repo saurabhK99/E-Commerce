@@ -5,6 +5,8 @@ import {
     updatePayment,
     getOrder,
     getAllOrders,
+    getOrdersForAdmin,
+    setDelivered,
 } from '../controllers/orderController.js'
 
 import verify from '../middlewares/verify.js'
@@ -17,6 +19,8 @@ router
     .post(verify, genInstance, createOrder)
     .get(verify, getAllOrders)
     .put(verify, updatePayment)
+
+router.route('/admin').get(verify, getOrdersForAdmin).put(verify, setDelivered)
 
 router.route('/:id').get(verify, getOrder)
 

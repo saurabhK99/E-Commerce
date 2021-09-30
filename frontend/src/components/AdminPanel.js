@@ -13,6 +13,10 @@ const AdminPanel = () => {
                     <Link className='dropDownLink' to='/admin/products'>
                         Products
                     </Link>
+                    <Link className='dropDownLink' to='/admin/orders'>
+                        Orders
+                    </Link>
+                    
                 </div>
             </span>
         </>

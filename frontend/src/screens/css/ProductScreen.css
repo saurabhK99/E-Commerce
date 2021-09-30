@@ -1,7 +1,7 @@
 .productScreenContainer {
     display: flex;
     justify-content: space-evenly;
-    min-height: calc(78vh);
+    height: fit-content;
     margin-top: 3em;
 }
 .imgContainer img {

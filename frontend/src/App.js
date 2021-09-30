@@ -16,6 +16,7 @@ import OrderDetailsScreen from './screens/OrderDetailsScreen'
 import UserListScreen from './screens/UserListScreen'
 import ProductListScreen from './screens/ProductListScreen'
 import AddProductScreen from './screens/AddProductScreen'
+import OrdersListScreen from './screens/OrdersListScreen'
 
 const App = () => {
     return (
@@ -47,6 +48,7 @@ const App = () => {
                         path='/admin/add-product'
                         component={AddProductScreen}
                     />
+                    <Route path='/admin/orders' component={OrdersListScreen} />
 
                     <Route path='*' component={ErrorScreen} />
                 </Switch>

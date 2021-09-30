@@ -72,3 +72,23 @@ export const getAllOrders = async (req, res) => {
         res.status(401).json({ error: err.message })
     }
 }
+
+export const getOrdersForAdmin = async (req, res) => {
+    try {
+        const orders = await Order.find({})
+        res.status(200).json(orders)
+    } catch (err) {
+        res.json({ error: err.message })
+    }
+}
+
+export const setDelivered = async (req, res) => {
+    try {
+        const order = await Order.findById(req.body.id)
+        order.isDelivered = true
+        order.save()
+        res.status(200).json({ success: 'Delivery Confirmed!' })
+    } catch (err) {
+        res.status(400).json({ error: err.message })
+    }
+}

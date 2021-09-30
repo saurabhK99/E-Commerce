@@ -5,6 +5,7 @@ import {
     getAllProducts,
     getProductById,
     removeProduct,
+    addReview,
 } from '../controllers/productController.js'
 
 import verify from '../middlewares/verify.js'
@@ -18,6 +19,8 @@ router
     .get(verify, getAllProducts)
     .delete(verify, removeProduct)
     .post(verify, addProduct)
+
+router.route('/review').put(verify, addReview)
 
 router.route('/:id').get(getProductById)
 

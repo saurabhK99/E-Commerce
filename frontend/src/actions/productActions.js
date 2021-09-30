@@ -16,17 +16,22 @@ import {
     PRODUCT_REMOVE_FAIL,
     PRODUCT_REMOVE_REQUEST,
     PRODUCT_REMOVE_SUCCESS,
+    PRODUCT_REVIEW_FAIL,
+    PRODUCT_REVIEW_REQUEST,
+    PRODUCT_REVIEW_SUCCESS,
 } from '../constants/productConstants'
 
-export const listProducts = () => async (dispatch) => {
-    try {
-        dispatch({ type: PRODUCT_LIST_REQUEST })
-        const { data } = await axios.get('/api/products')
-        dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data })
-    } catch (err) {
-        dispatch({ type: PRODUCT_LIST_FAIL, payload: err.message })
+export const listProducts =
+    (filter = '') =>
+    async (dispatch) => {
+        try {
+            dispatch({ type: PRODUCT_LIST_REQUEST })
+            const { data } = await axios.get(`/api/products?filter=${filter}`)
+            dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data })
+        } catch (err) {
+            dispatch({ type: PRODUCT_LIST_FAIL, payload: err.message })
+        }
     }
-}
 
 export const listProductDetails = (id) => async (dispatch) => {
     try {
@@ -101,3 +106,33 @@ export const addProduct = (productDetails) => async (dispatch, getState) => {
         dispatch({ type: PRODUCT_ADD_FAIL, payload: err.message })
     }
 }
+
+export const addReview =
+    (productId, reviewBody) => async (dispatch, getState) => {
+        const token =
+            getState().userLogin.userInfo && getState().userLogin.userInfo.token
+
+        dispatch({ type: PRODUCT_REVIEW_REQUEST })
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+        }
+
+        const { data } = await axios.put(
+            '/api/products/review',
+            { productId, review: reviewBody },
+            config
+        )
+        dispatch({ type: PRODUCT_REVIEW_SUCCESS, payload: data })
+
+        try {
+        } catch (err) {
+            dispatch({
+                type: PRODUCT_REVIEW_FAIL,
+                payload: err.response ? err.response.data.error : err.message,
+            })
+        }
+    }

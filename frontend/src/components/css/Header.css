@@ -28,3 +28,26 @@
 .headerLink:hover {
     border: 1px solid whitesmoke;
 }
+
+.headerSearchBox {
+    display: flex;
+    margin: 0 2em;
+    /* border: 1px solid red; */
+    align-items: center;
+}
+
+.searchBoxInput {
+    margin: 0 0.5rem;
+}
+
+.searchBoxButton {
+    background-color: var(--grey);
+    border: none;
+    transition: 0.2s;
+    border-radius: 5px;
+    padding: 0.5em;
+}
+
+.searchBoxButton:hover {
+    border: 1px solid whitesmoke;
+}

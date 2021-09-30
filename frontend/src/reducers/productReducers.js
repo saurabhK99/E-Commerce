@@ -14,6 +14,9 @@ import {
     PRODUCT_REMOVE_FAIL,
     PRODUCT_REMOVE_REQUEST,
     PRODUCT_REMOVE_SUCCESS,
+    PRODUCT_REVIEW_FAIL,
+    PRODUCT_REVIEW_REQUEST,
+    PRODUCT_REVIEW_SUCCESS,
 } from '../constants/productConstants'
 
 export const productListReducer = (state = { products: [] }, action) => {
@@ -96,5 +99,21 @@ export const productAddReducer = (state = { status: {} }, action) => {
 
         default:
             return state
+    }
+}
+
+export const productReviewReducer = (state = { status: {} }, action) => {
+    switch (action.type) {
+        case PRODUCT_REVIEW_REQUEST:
+            return { loading: true }
+
+        case PRODUCT_REVIEW_SUCCESS:
+            return { loading: false, status: action.payload }
+
+        case PRODUCT_REVIEW_FAIL:
+            return { loading: false, error: action.payload }
+
+        default:
+            return { ...state }
     }
 }

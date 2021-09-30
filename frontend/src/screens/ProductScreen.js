@@ -2,17 +2,22 @@ import React, { useState, useEffect } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 
-import { listProductDetails } from '../actions/productActions'
+import { listProductDetails, addReview } from '../actions/productActions'
+
 import Message from '../components/Message'
 import Loading from '../components/Loading'
+import Review from '../components/Review'
 
 import './css/ProductScreen.css'
 
 const ProductScreen = ({ history, match }) => {
     const [qty, setQty] = useState(1)
+    const [comment, setComment] = useState()
+    const [rating, setRating] = useState(1)
 
     const dispatch = useDispatch()
     const productDetails = useSelector((s) => s.productDetails)
+    const userInfo = useSelector((s) => s.userLogin.userInfo)
 
     const { loading, error, product } = productDetails
 
@@ -24,6 +29,27 @@ const ProductScreen = ({ history, match }) => {
         history.push(`/cart/${match.params.id}?qty=${qty}`)
     }
 
+    const showReviewHandler = (e) => {
+        let element = document.querySelector('.reviewForm')
+        if (element.classList.contains('disableCurrent')) {
+            element.classList.remove('disableCurrent')
+            e.target.value = 'Hide'
+        } else {
+            element.classList.add('disableCurrent')
+            e.target.value = 'Add Review'
+        }
+    }
+    const addReviewHandler = (e) => {
+        e.preventDefault()
+
+        dispatch(
+            addReview(product._id, { comment, name: userInfo.name, rating })
+        )
+        setTimeout(() => {
+            dispatch(listProductDetails(match.params.id))
+        }, 500)
+    }
+
     return (
         <>
             {loading ? (
@@ -31,51 +57,98 @@ const ProductScreen = ({ history, match }) => {
             ) : error ? (
                 <Message>{error}</Message>
             ) : (
-                <div className='productScreenContainer'>
-                    <section className='imgContainer'>
-                        <img src={product.image} alt='' />
-                    </section>
+                <div>
+                    <section className='productScreenContainer'>
+                        <section className='imgContainer'>
+                            <img src={product.image} alt='' />
+                        </section>
 
-                    <section className='descContainer'>
-                        <strong>{product.name}</strong>
-                        <strong>{`${product.rating} stars  ${product.numReviews} Reviews`}</strong>
-                        <strong>{product.brand}</strong>
-                        <p>{product.description}</p>
-                    </section>
+                        <section className='descContainer'>
+                            <strong>{product.name}</strong>
+                            <strong>{`${product.rating} stars  ${product.numReviews} Reviews`}</strong>
+                            <strong>{product.brand}</strong>
+                            <p>{product.description}</p>
+                        </section>
 
-                    <section className='priceContainer'>
-                        <span className='block'></span>
-                        <strong>{`Price: ${product.price}`}</strong>
-                        <span>
-                            {product.countInStock
-                                ? `In-Stock: ${product.countInStock}`
-                                : 'Out of Stock'}
-                        </span>
-                        <span>
-                            Qty:{' '}
-                            <select
-                                name='qty'
-                                id='qty-id'
-                                value={qty}
-                                onChange={(e) => setQty(e.target.value)}
-                            >
-                                {[...Array(product.countInStock).keys()].map(
-                                    (k) => (
+                        <section className='priceContainer'>
+                            <span className='block'></span>
+                            <strong>{`Price: ${product.price}`}</strong>
+                            <span>
+                                {product.countInStock
+                                    ? `In-Stock: ${product.countInStock}`
+                                    : 'Out of Stock'}
+                            </span>
+                            <span>
+                                Qty:{' '}
+                                <select
+                                    name='qty'
+                                    id='qty-id'
+                                    value={qty}
+                                    onChange={(e) => setQty(e.target.value)}
+                                >
+                                    {[
+                                        ...Array(product.countInStock).keys(),
+                                    ].map((k) => (
                                         <option key={k + 1} value={k + 1}>
                                             {k + 1}
                                         </option>
-                                    )
-                                )}
-                            </select>
-                        </span>
-                        <button
-                            className='addToCart'
-                            id='cart'
-                            onClick={addToCartHandler}
-                            disabled={!product.countInStock}
+                                    ))}
+                                </select>
+                            </span>
+                            <button
+                                className='addToCart'
+                                id='cart'
+                                onClick={addToCartHandler}
+                                disabled={!product.countInStock}
+                            >
+                                Add to Cart
+                            </button>
+                        </section>
+                    </section>
+                    <section className='review'>
+                        <span className='reviewHeading'>Reviews</span>
+                        {userInfo && (
+                            <input
+                                type='button'
+                                onClick={showReviewHandler}
+                                value='Add Review'
+                            />
+                        )}
+                        <form
+                            className='reviewForm disableCurrent'
+                            onSubmit={addReviewHandler}
                         >
-                            Add to Cart
-                        </button>
+                            <textarea
+                                name='commentBox'
+                                id='comment'
+                                cols='50'
+                                rows='3'
+                                value={comment}
+                                onChange={(e) => setComment(e.target.value)}
+                            ></textarea>
+                            <select
+                                name='ratingBox'
+                                onChange={(e) => setRating(e.target.value)}
+                            >
+                                <option value='1'>1</option>
+                                <option value='2'>2</option>
+                                <option value='3'>3</option>
+                                <option value='4'>4</option>
+                                <option value='5'>5</option>
+                            </select>
+                            <input type='submit' value='Submit' />
+                        </form>
+
+                        {product.reviews &&
+                            (product.reviews.length > 0 ? (
+                                <div className='reviewContainer'>
+                                    {product.reviews.map((review) => (
+                                        <Review review={review} />
+                                    ))}
+                                </div>
+                            ) : (
+                                <h1>No Reviews</h1>
+                            ))}
                     </section>
                 </div>
             )}
