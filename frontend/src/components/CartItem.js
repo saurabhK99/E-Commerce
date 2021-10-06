@@ -1,6 +1,9 @@
 import React from 'react'
 import { addToCart, removeFromCart } from '../actions/cartActions'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+
 import { useDispatch } from 'react-redux'
 
 import './css/CartItem.css'
@@ -18,8 +21,9 @@ const CartItem = ({ item, disable }) => {
                 <img src={item.image} alt='' />
                 <span className='itemDetails'>
                     <strong>{item.name}</strong>
-                    <strong>{item.price}</strong>
+                    <strong>&#8377; {item.price}</strong>
                     <select
+                        className='selectContainer'
                         name='qty'
                         id='qty-id'
                         value={item.qty}
@@ -37,10 +41,10 @@ const CartItem = ({ item, disable }) => {
                     </select>
                 </span>
                 <button
-                    className={`removeItem ${disable}`}
+                    className={`removeItemButton ${disable}`}
                     onClick={removeHandler}
                 >
-                    remove
+                    <FontAwesomeIcon icon={faTrashAlt} />
                 </button>
             </div>
         </>

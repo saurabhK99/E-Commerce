@@ -7,6 +7,7 @@ import { listProductDetails, addReview } from '../actions/productActions'
 import Message from '../components/Message'
 import Loading from '../components/Loading'
 import Review from '../components/Review'
+import Rating from '../components/Rating'
 
 import './css/ProductScreen.css'
 
@@ -65,38 +66,38 @@ const ProductScreen = ({ history, match }) => {
 
                         <section className='descContainer'>
                             <strong>{product.name}</strong>
-                            <strong>{`${product.rating} stars  ${product.numReviews} Reviews`}</strong>
+                            <span>
+                                <Rating rating={product.rating} />
+                            </span>
                             <strong>{product.brand}</strong>
                             <p>{product.description}</p>
                         </section>
 
                         <section className='priceContainer'>
-                            <span className='block'></span>
-                            <strong>{`Price: ${product.price}`}</strong>
+                            <span>Price: &#8377; {product.price}</span>
                             <span>
                                 {product.countInStock
                                     ? `In-Stock: ${product.countInStock}`
                                     : 'Out of Stock'}
                             </span>
-                            <span>
-                                Qty:{' '}
-                                <select
-                                    name='qty'
-                                    id='qty-id'
-                                    value={qty}
-                                    onChange={(e) => setQty(e.target.value)}
-                                >
-                                    {[
-                                        ...Array(product.countInStock).keys(),
-                                    ].map((k) => (
+
+                            <select
+                                className='selectContainer'
+                                name='qty'
+                                id='qty-id'
+                                value={qty}
+                                onChange={(e) => setQty(e.target.value)}
+                            >
+                                {[...Array(product.countInStock).keys()].map(
+                                    (k) => (
                                         <option key={k + 1} value={k + 1}>
                                             {k + 1}
                                         </option>
-                                    ))}
-                                </select>
-                            </span>
+                                    )
+                                )}
+                            </select>
                             <button
-                                className='addToCart'
+                                className='addToCartButton'
                                 id='cart'
                                 onClick={addToCartHandler}
                                 disabled={!product.countInStock}
@@ -105,11 +106,12 @@ const ProductScreen = ({ history, match }) => {
                             </button>
                         </section>
                     </section>
-                    <section className='review'>
+                    <section className='reviewsContainer'>
                         <span className='reviewHeading'>Reviews</span>
                         {userInfo && (
                             <input
                                 type='button'
+                                className='reviewButton floatingButton'
                                 onClick={showReviewHandler}
                                 value='Add Review'
                             />
@@ -128,6 +130,7 @@ const ProductScreen = ({ history, match }) => {
                             ></textarea>
                             <select
                                 name='ratingBox'
+                                className='selectContainer'
                                 onChange={(e) => setRating(e.target.value)}
                             >
                                 <option value='1'>1</option>
@@ -136,7 +139,11 @@ const ProductScreen = ({ history, match }) => {
                                 <option value='4'>4</option>
                                 <option value='5'>5</option>
                             </select>
-                            <input type='submit' value='Submit' />
+                            <input
+                                type='submit'
+                                className='reviewButton'
+                                value='Submit'
+                            />
                         </form>
 
                         {product.reviews &&
@@ -147,7 +154,7 @@ const ProductScreen = ({ history, match }) => {
                                     ))}
                                 </div>
                             ) : (
-                                <h1>No Reviews</h1>
+                                <h1 className='noReviewH1'>No Reviews</h1>
                             ))}
                     </section>
                 </div>

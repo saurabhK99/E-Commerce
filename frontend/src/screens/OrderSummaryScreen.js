@@ -20,6 +20,7 @@ const OrderSummaryScreen = ({ history }) => {
     const [itemsPrice, setItemsPrice] = useState(0)
     const [taxPrice, setTaxPrice] = useState(0)
     const [totalPrice, setTotalPrice] = useState(0)
+    const [orderCreated, setOrderCreated] = useState(false)
 
     useEffect(() => {
         let itemsTotal = cartItems
@@ -36,10 +37,18 @@ const OrderSummaryScreen = ({ history }) => {
 
         setTotalPrice(total)
 
+        if (orderCreated) {
+            const orderBtn = document.querySelector('.orderActionButton')
+            const payBtn = document.querySelector('.orderPayButton')
+
+            payBtn.classList.remove('disableCurrent')
+            orderBtn.classList.add('disableCurrent')
+        }
+
         if (payStatus) {
             history.push('/payment-success')
         }
-    }, [cartItems, history, payStatus])
+    }, [cartItems, history, payStatus, orderCreated])
 
     const placeOrderHandler = (e) => {
         e.preventDefault()
@@ -56,17 +65,9 @@ const OrderSummaryScreen = ({ history }) => {
             },
         }
 
+        setOrderCreated(true)
+
         dispatch(createOrder(orderBody))
-
-        if (orderInfo.length > 0) {
-            document
-                .querySelectorAll('.orderActionButton')[0]
-                .classList.add('disableCurrent')
-
-            document
-                .querySelectorAll('.orderActionButton')[1]
-                .classList.remove('disableCurrent')
-        }
     }
 
     const payHandler = (e) => {
@@ -124,24 +125,24 @@ const OrderSummaryScreen = ({ history }) => {
                 <Shipping />
 
                 <div className='totalPriceContainer'>
-                    <table className='priceTalble'>
+                    <table className='priceTable'>
                         <tbody>
-                            <tr className='priceItems'>
+                            <tr>
                                 <td>Items Price</td>
                                 <td>&#8377; {itemsPrice}</td>
                             </tr>
 
-                            <tr className='priceItems'>
+                            <tr>
                                 <td>Shipping Price</td>
                                 <td>&#8377; 0</td>
                             </tr>
 
-                            <tr className='priceItems'>
+                            <tr>
                                 <td>GST</td>
                                 <td>&#8377; {taxPrice}</td>
                             </tr>
 
-                            <tr className='priceItems'>
+                            <tr>
                                 <td>
                                     <b>Total</b>
                                 </td>
@@ -163,7 +164,7 @@ const OrderSummaryScreen = ({ history }) => {
                 <button
                     style={{ alignSelf: 'center', width: '100%' }}
                     onClick={payHandler}
-                    className='orderActionButton'
+                    className=' disableCurrent orderPayButton'
                 >
                     PAY WITH RAZORPAY
                 </button>

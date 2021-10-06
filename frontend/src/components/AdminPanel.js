@@ -6,7 +6,7 @@ const AdminPanel = () => {
         <>
             <span className='headerLink dropDownHandler'>
                 Admin Panel
-                <div className='dropDownContainer'>
+                <div className='dropDownContainer admin'>
                     <Link className='dropDownLink' to='/admin/users'>
                         User Profiles
                     </Link>
@@ -16,7 +16,6 @@ const AdminPanel = () => {
                     <Link className='dropDownLink' to='/admin/orders'>
                         Orders
                     </Link>
-                    
                 </div>
             </span>
         </>

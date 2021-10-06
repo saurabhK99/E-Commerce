@@ -23,7 +23,8 @@ const Header = () => {
     const { userInfo } = user
 
     const searchHandler = () => {
-        dispatch(listProducts(filter))
+        dispatch(listProducts(1, filter))
+        dispatch({ type: 'PRODUCT_APPLY_FILTER', payload: filter })
     }
 
     return (

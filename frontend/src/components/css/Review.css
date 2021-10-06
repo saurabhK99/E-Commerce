@@ -1,0 +1,17 @@
+.reviewBoxContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.reviewerName {
+    font-size: 1.5em;
+    text-transform: uppercase;
+    margin: 1rem;
+}
+
+.reviewerComment {
+    margin: 1rem;
+}

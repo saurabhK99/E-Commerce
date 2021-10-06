@@ -1,22 +1,25 @@
 .productScreenContainer {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     height: fit-content;
-    margin-top: 3em;
+    margin: 6rem auto 6rem auto;
 }
+.imgContainer {
+    width: 30%;
+}
+
 .imgContainer img {
     border-radius: 5px;
     box-shadow: 0 8px 16px 0 rgb(0, 0, 0, 0.3);
-    height: 30vw;
-    width: 30vw;
+    height: 45vh;
+    margin: 1rem;
 }
 
 .descContainer {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    height: 30vw;
-    width: 30vw;
+    width: 30%;
     align-items: center;
     justify-content: center;
 }
@@ -31,27 +34,23 @@
 }
 
 .priceContainer {
-    border: 2px solid var(--grey);
     height: fit-content;
-    width: 30vw;
+    padding: 1em;
+    width: 20%;
     display: flex;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     flex-direction: column;
     align-items: center;
+    font-size: 1.2rem;
+    margin: 2rem;
 }
 
-.priceContainer strong,
 .priceContainer span {
-    margin-bottom: 1.5rem;
-    font-size: 1.5em;
+    margin: 0.5rem;
 }
 
-.priceContainer .block {
-    width: 100%;
-    height: 2em;
-    background-color: var(--grey);
-}
-
-.addToCart {
+.addToCartButton {
     width: 50%;
     margin-bottom: 1em;
     font-size: 1em;
@@ -59,10 +58,11 @@
     background-color: var(--grey);
     border: none;
     color: whitesmoke;
-    transition: 0.3s;
+    border-radius: 5px;
+    transition: 0.2s;
 }
 
-.addToCart:hover {
+.addToCartButton:hover {
     color: var(--grey);
     background-color: orange;
 }
@@ -75,4 +75,60 @@
     background-color: var(--grey);
     border: none;
     color: grey;
+}
+
+.reviewsContainer {
+    position: relative;
+    margin: 2rem;
+}
+
+.reviewHeading {
+    text-transform: uppercase;
+    font-size: 2rem;
+    margin: 1rem;
+}
+
+.reviewButton {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    margin-left: 2rem;
+    background-color: var(--grey);
+    color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+
+.floatingButton {
+    position: absolute;
+    top: 0;
+}
+
+.reviewButton:hover {
+    color: var(--grey);
+    background-color: orange;
+}
+
+.noReviewH1 {
+    text-align: center;
+}
+
+.reviewForm {
+    display: flex;
+    align-items: center;
+}
+
+.reviewForm textarea {
+    margin: 1em;
+    border-radius: 5px;
+}
+
+.selectContainer {
+    margin: 1em;
+    font-size: 1rem;
+    background-color: orange;
+    color: var(--grey);
+    border: none;
+    border-radius: 5px;
+    padding: 0.25em;
 }

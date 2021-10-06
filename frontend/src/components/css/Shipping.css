@@ -16,6 +16,13 @@
     flex-wrap: wrap;
 }
 
+.shippingForm input {
+    flex-basis: 40%;
+    margin: 1rem;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
 .shippingUpdateButton {
     position: absolute;
     top: 0;

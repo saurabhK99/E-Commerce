@@ -1,0 +1,27 @@
+.paginationContainer {
+    text-align: center;
+}
+
+.pageButton {
+    width: 2rem;
+    padding: 0.5em;
+    margin: 0.1rem;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--grey);
+    color: whitesmoke;
+    transition: 0.2s;
+    border: 0.5px solid whitesmoke;
+}
+
+.pageButton:hover {
+    background-color: whitesmoke;
+    color: var(--grey);
+    border: 0.5px solid var(--grey);
+}
+
+.currentPageButton {
+    background-color: orange;
+    color: var(--grey);
+}

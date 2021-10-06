@@ -1,12 +1,17 @@
 import React from 'react'
 
+import Rating from './Rating'
+
+import './css/Review.css'
+
 const Review = ({ review }) => {
     return (
-        <div className='reviewBoxConatiner'>
-            <span>
-                <span>{review.name}</span> {`${review.rating} out of 5`}
+        <div className='reviewBoxContainer'>
+            <span className='reviewerRatingContainer'>
+                <span className='reviewerName'>{review.name}</span>{' '}
+                <Rating rating={review.rating} />
             </span>
-            <span>{review.comment}</span>
+            <span className='reviewerComment'>{review.comment}</span>
         </div>
     )
 }

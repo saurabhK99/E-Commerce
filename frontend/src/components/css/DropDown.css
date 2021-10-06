@@ -1,12 +1,19 @@
+.dropDownHandler {
+    position: relative;
+}
+
 .dropDownContainer {
     position: absolute;
     font-size: 1rem;
     display: none;
     flex-direction: column;
-    top: 4rem;
-    right: 5rem;
+    right: -10%;
     border-radius: 5px;
     background-color: rgb(241, 241, 241);
+}
+
+.admin {
+    right: 5%;
 }
 
 .dropDownDisabled {
@@ -16,6 +23,7 @@
 .dropDownLink {
     text-decoration: none;
     font-size: 1.2em;
+    text-align: center;
     color: var(--grey);
     padding: 1em;
     transition: 0.2s;

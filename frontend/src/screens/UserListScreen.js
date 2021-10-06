@@ -26,7 +26,7 @@ const UserListScreen = () => {
                 <Message type='error'>{error}</Message>
             ) : (
                 usersList.length > 0 && (
-                    <table>
+                    <table className='userTable'>
                         <thead>
                             <tr>
                                 <th>Name</th>

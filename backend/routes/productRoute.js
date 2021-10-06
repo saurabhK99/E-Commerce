@@ -3,6 +3,7 @@ import express from 'express'
 import {
     addProduct,
     getAllProducts,
+    getAllProductsForAdmin,
     getProductById,
     removeProduct,
     addReview,
@@ -16,7 +17,7 @@ router.route('/').get(getAllProducts)
 
 router
     .route('/admin')
-    .get(verify, getAllProducts)
+    .get(verify, getAllProductsForAdmin)
     .delete(verify, removeProduct)
     .post(verify, addProduct)
 

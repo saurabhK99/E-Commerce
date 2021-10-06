@@ -25,7 +25,9 @@
     margin-bottom: 2em;
 }
 
-.orderActionButton {
+.orderActionButton,
+.orderPayButton {
+    display: inline-block;
     color: whitesmoke;
     background-color: var(--grey);
     border: none;
@@ -36,21 +38,22 @@
     text-align: center;
     transition: 0.3s;
 }
-.orderActionButton:hover {
+
+.orderPayButton {
+    margin-bottom: 2em;
+    border-radius: 5px;
+}
+.orderActionButton:hover,
+.orderPayButton:hover {
     color: var(--grey);
     background-color: orange;
+}
+
+.disableCurrent {
+    display: none;
 }
 
 .priceTable {
     width: 85%;
     border-spacing: 5em 1em;
-}
-
-.paypalButtonContainer {
-    align-self: center;
-    width: 80%;
-}
-
-.disableCurrent {
-    display: none;
 }

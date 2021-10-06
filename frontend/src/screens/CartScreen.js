@@ -27,7 +27,16 @@ const CartScreen = ({ match, history, location }) => {
     return (
         <>
             {cartItems.length < 1 ? (
-                <strong>Cart Empty!</strong>
+                <div
+                    style={{
+                        textAlign: 'center',
+                        marginTop: '10%',
+                        textTransform: 'uppercase',
+                        fontSize: '2rem',
+                    }}
+                >
+                    Cart Empty!
+                </div>
             ) : (
                 <div className='cartScreenContainer'>
                     <section className='cartItemsSection'>
@@ -37,18 +46,17 @@ const CartScreen = ({ match, history, location }) => {
                     </section>
 
                     <section className='checkoutSection'>
-                        <span className='block'></span>
-                        <strong>
-                            Total items:
+                        <span>
+                            Total items:{' '}
                             {cartItems.reduce((acc, item) => acc + item.qty, 0)}
-                        </strong>
-                        <strong>
-                            Total Price:
+                        </span>
+                        <span>
+                            Total Price: &#8377;
                             {cartItems.reduce(
                                 (acc, item) => acc + item.qty * item.price,
                                 0
                             )}
-                        </strong>
+                        </span>
                         <button className='checkout' onClick={checkoutHandler}>
                             Check-Out
                         </button>
