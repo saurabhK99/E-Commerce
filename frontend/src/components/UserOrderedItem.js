@@ -1,5 +1,8 @@
 import React from 'react'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+
 import { Link } from 'react-router-dom'
 
 import './css/UserOrderedItem.css'
@@ -41,7 +44,10 @@ const UserOrderedItem = ({ orders }) => {
                                     <td>Paid</td>
                                     <td>
                                         <Link to={`/order/${item._id}`}>
-                                            Details
+                                            <FontAwesomeIcon
+                                                className='moreInfoIcon'
+                                                icon={faInfoCircle}
+                                            />
                                         </Link>
                                     </td>
                                 </tr>

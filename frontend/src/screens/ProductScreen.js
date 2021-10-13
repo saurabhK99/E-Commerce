@@ -60,17 +60,19 @@ const ProductScreen = ({ history, match }) => {
             ) : (
                 <div>
                     <section className='productScreenContainer'>
-                        <section className='imgContainer'>
-                            <img src={product.image} alt='' />
-                        </section>
+                        <section className='productSpecContainer'>
+                            <section className='imgContainer'>
+                                <img src={product.image} alt='' />
+                            </section>
 
-                        <section className='descContainer'>
-                            <strong>{product.name}</strong>
-                            <span>
-                                <Rating rating={product.rating} />
-                            </span>
-                            <strong>{product.brand}</strong>
-                            <p>{product.description}</p>
+                            <section className='descContainer'>
+                                <strong>{product.name}</strong>
+                                <span>
+                                    <Rating rating={product.rating} />
+                                </span>
+                                <strong>{product.brand}</strong>
+                                <p>{product.description}</p>
+                            </section>
                         </section>
 
                         <section className='priceContainer'>
@@ -128,22 +130,24 @@ const ProductScreen = ({ history, match }) => {
                                 value={comment}
                                 onChange={(e) => setComment(e.target.value)}
                             ></textarea>
-                            <select
-                                name='ratingBox'
-                                className='selectContainer'
-                                onChange={(e) => setRating(e.target.value)}
-                            >
-                                <option value='1'>1</option>
-                                <option value='2'>2</option>
-                                <option value='3'>3</option>
-                                <option value='4'>4</option>
-                                <option value='5'>5</option>
-                            </select>
-                            <input
-                                type='submit'
-                                className='reviewButton'
-                                value='Submit'
-                            />
+                            <section className='ratingSubmitSection'>
+                                <select
+                                    name='ratingBox'
+                                    className='selectContainer'
+                                    onChange={(e) => setRating(e.target.value)}
+                                >
+                                    <option value='1'>1</option>
+                                    <option value='2'>2</option>
+                                    <option value='3'>3</option>
+                                    <option value='4'>4</option>
+                                    <option value='5'>5</option>
+                                </select>
+                                <input
+                                    type='submit'
+                                    className='reviewButton'
+                                    value='Submit'
+                                />
+                            </section>
                         </form>
 
                         {product.reviews &&

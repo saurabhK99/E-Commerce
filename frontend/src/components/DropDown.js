@@ -1,5 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSignOutAlt, faUserCircle } from '@fortawesome/free-solid-svg-icons'
 
 import { userLogout } from '../actions/userActions'
 
@@ -7,26 +10,51 @@ import { useDispatch } from 'react-redux'
 
 import './css/DropDown.css'
 
-const DropDown = ({ userInfo }) => {
+const DropDown = ({ userInfo, response }) => {
     const dispatch = useDispatch()
     const history = useHistory()
+
+    const [containerName, setContainerName] = useState(
+        response ? 'dropDownClickContainer disableCurrent' : 'dropDownContainer'
+    )
 
     const logoutHandler = () => {
         dispatch(userLogout())
         history.push('/')
     }
 
+    const userClickHandler = () => {
+        const elements = document.querySelectorAll('.user')
+
+        let elem = elements[1].classList
+
+        if (elem.contains('dropDownClickContainer')) {
+            if (elem.contains('disableCurrent'))
+                setContainerName('dropDownClickContainer')
+            else setContainerName('dropDownClickContainer disableCurrent')
+        }
+    }
+
     return (
         <>
-            <span className='headerLink dropDownHandler'>
+            <span
+                className='headerLink dropDownHandler'
+                onClick={userClickHandler}
+            >
                 {userInfo.name}
 
-                <div className='dropDownContainer'>
+                <div className={`${containerName} user`}>
                     <Link className='dropDownLink' to='/profile'>
-                        Profile
+                        <FontAwesomeIcon
+                            className='dropDownIcon'
+                            icon={faUserCircle}
+                        />
                     </Link>
-                    <span className='logout' onClick={logoutHandler}>
-                        Logout
+                    <span className='dropDownLink' onClick={logoutHandler}>
+                        <FontAwesomeIcon
+                            className='dropDownIcon'
+                            icon={faSignOutAlt}
+                        />
                     </span>
                 </div>
             </span>

@@ -1,0 +1,19 @@
+.deleteUser {
+    transition: 0.2s;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.deleteUser:hover {
+    color: red;
+}
+
+.markDelivered {
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.markDelivered:hover {
+    color: green;
+}

@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { addProduct } from '../actions/productActions'
 import Message from '../components/Message'
 
+import './css/AddProductScreen.css'
+
 const AddProductScreen = () => {
     const [pname, setPname] = useState('')
     const [brand, setBrand] = useState('')
@@ -62,52 +64,137 @@ const AddProductScreen = () => {
                 </section>
             )}
             <form onSubmit={addHandler}>
-                <input
-                    type='text'
-                    value={pname}
-                    onChange={(e) => setPname(e.target.value)}
-                    placeholder='Product Name'
-                />
-                <input type='file' onChange={uploadHandler} />
-                <input
-                    type='text'
-                    value={brand}
-                    onChange={(e) => setBrand(e.target.value)}
-                    placeholder='Brand'
-                />
-                <span>
-                    Category:{' '}
-                    <select
-                        name='category'
-                        id='category'
-                        onChange={(e) => setCategory(e.target.value)}
-                    >
-                        <option value='Electronics'>Electronics</option>
-                        <option value='Lifestyle'>Lifestyle</option>
-                        <option value='Appliance'>Appliance</option>
-                        <option value='Clothing'>Clothing</option>
-                        <option value='Groceries'>Groceries</option>
-                    </select>
-                </span>
-                <input
-                    type='text'
-                    value={desc}
-                    onChange={(e) => setDesc(e.target.value)}
-                    placeholder='Description'
-                />
-                <input
-                    type='text'
-                    value={price}
-                    onChange={(e) => setPrice(e.target.value)}
-                    placeholder='Price'
-                />
-                <input
-                    type='text'
-                    value={count}
-                    onChange={(e) => setCount(e.target.value)}
-                    placeholder='Count In Stock'
-                />
-                <input type='submit' value='ADD' />
+                <table className='addProductTable'>
+                    <thead>
+                        <tr>
+                            <th colSpan='2'>fill product details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label htmlFor='pr_name'>Product Name</label>
+                            </td>
+                            <td>
+                                <input
+                                    type='text'
+                                    value={pname}
+                                    onChange={(e) => setPname(e.target.value)}
+                                    id='pr_name'
+                                />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label htmlFor='pr_image'>Product Image</label>
+                            </td>
+                            <td>
+                                <input
+                                    className='imageInput'
+                                    type='file'
+                                    onChange={uploadHandler}
+                                    id='pr_image'
+                                />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label htmlFor='pr_brand'>Product Brand</label>
+                            </td>
+                            <td>
+                                <input
+                                    type='text'
+                                    value={brand}
+                                    onChange={(e) => setBrand(e.target.value)}
+                                    id='pr_brand'
+                                />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label htmlFor='pr_category'>
+                                    Product Category
+                                </label>
+                            </td>
+                            <td>
+                                <select
+                                    name='category'
+                                    id='pr_category'
+                                    onChange={(e) =>
+                                        setCategory(e.target.value)
+                                    }
+                                >
+                                    <option value='Electronics'>
+                                        Electronics
+                                    </option>
+                                    <option value='Lifestyle'>Lifestyle</option>
+                                    <option value='Appliance'>Appliance</option>
+                                    <option value='Clothing'>Clothing</option>
+                                    <option value='Groceries'>Groceries</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label htmlFor='pr_description'>
+                                    Product Description
+                                </label>
+                            </td>
+                            <td>
+                                <textarea
+                                    value={desc}
+                                    onChange={(e) => setDesc(e.target.value)}
+                                    id='pr_description'
+                                    cols='30'
+                                    rows='5'
+                                ></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label htmlFor='pr_price'>
+                                    Product Price(&#8377;)
+                                </label>
+                            </td>
+                            <td>
+                                <input
+                                    type='text'
+                                    value={price}
+                                    onChange={(e) => setPrice(e.target.value)}
+                                    id='pr_price'
+                                />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label htmlFor='pr_count'>Product Count</label>
+                            </td>
+                            <td>
+                                <input
+                                    type='text'
+                                    value={count}
+                                    onChange={(e) => setCount(e.target.value)}
+                                    id='pr_count'
+                                />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colSpan='2'>
+                                <input
+                                    type='submit'
+                                    value='ADD'
+                                    className='addProductButton'
+                                />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </form>
         </>
     )

@@ -24,11 +24,20 @@ const OrdersListScreen = () => {
             ) : error ? (
                 <Message type='error'>{error}</Message>
             ) : (
-                <div className='ordersListContainer'>
-                    {orders.map((order) => (
-                        <OrderPanel key={order._id} order={order} />
-                    ))}
-                </div>
+                <table className='defaultTable'>
+                    <thead>
+                        <tr>
+                            <th>order id</th>
+                            <th>delivery status</th>
+                            <th>mark</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {orders.map((order) => (
+                            <OrderPanel key={order._id} order={order} />
+                        ))}
+                    </tbody>
+                </table>
             )}
         </>
     )

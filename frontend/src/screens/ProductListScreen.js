@@ -29,9 +29,25 @@ const ProductListScreen = ({ history }) => {
             ) : (
                 productsList.length > 0 && (
                     <div className='productListContainer'>
-                        {productsList.map((product) => (
-                            <ProductPanel key={product._id} info={product} />
-                        ))}
+                        <table className='defaultTable'>
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Remove </th>
+                                </tr>
+                            </thead>
+                            {productsList.map((product) => (
+                                <tbody>
+                                    <ProductPanel
+                                        key={product._id}
+                                        info={product}
+                                    />
+                                </tbody>
+                            ))}
+                        </table>
 
                         <button
                             className='addProductButton'

@@ -5,7 +5,13 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import {
+    faSearch,
+    faBars,
+    faTimes,
+    faShoppingCart,
+    faSignInAlt,
+} from '@fortawesome/free-solid-svg-icons'
 
 import DropDown from '../components/DropDown'
 
@@ -15,6 +21,7 @@ import { listProducts } from '../actions/productActions'
 
 const Header = () => {
     const [filter, setFilter] = useState('')
+    const [ico, setIco] = useState(faBars)
 
     const dispatch = useDispatch()
 
@@ -27,49 +34,80 @@ const Header = () => {
         dispatch({ type: 'PRODUCT_APPLY_FILTER', payload: filter })
     }
 
+    const menuDropDownHandler = () => {
+        if (ico === faBars) {
+            setIco(faTimes)
+        } else setIco(faBars)
+    }
+
     return (
         <>
             <div className='headerContainer'>
-                <Link to='/'>
-                    <h2 className='headerH1'>E-Commerce</h2>
+                <Link to='/' className='mainLogo'>
+                    <img src='logo/mainLogo.png' alt='website logo' />
                 </Link>
-                <ul className='headerUl'>
-                    <li className='headerSearchBox'>
-                        <input
-                            className='searchBoxInput'
-                            type='text'
-                            value={filter}
-                            onChange={(e) => setFilter(e.target.value)}
+                <span className='headerSearchBox'>
+                    <input
+                        className='searchBoxInput'
+                        type='text'
+                        value={filter}
+                        onChange={(e) => setFilter(e.target.value)}
+                    />
+                    <button className='searchBoxButton' onClick={searchHandler}>
+                        <FontAwesomeIcon
+                            icon={faSearch}
+                            style={{
+                                color: 'whitesmoke',
+                                fontSize: '1.5em',
+                            }}
                         />
-                        <button
-                            className='searchBoxButton'
-                            onClick={searchHandler}
-                        >
-                            <FontAwesomeIcon
-                                icon={faSearch}
-                                style={{
-                                    color: 'whitesmoke',
-                                    fontSize: '1.5em',
-                                }}
-                            />
-                        </button>
-                    </li>
-                    <li>
+                    </button>
+                </span>
+                <ul className='headerUl'>
+                    <li className='responsiveLi'>
                         <Link className='headerLink' to='/cart'>
-                            Cart
+                            <FontAwesomeIcon icon={faShoppingCart} />
                         </Link>
                     </li>
 
-                    <li>{userInfo && userInfo.admin && <AdminPanel />}</li>
-                    <li>
+                    <li className='responsiveLi'>
+                        {userInfo && userInfo.admin && <AdminPanel />}
+                    </li>
+                    <li className='responsiveLi'>
                         {!userInfo && (
                             <Link className='headerLink' to='/login'>
-                                Login
+                                <FontAwesomeIcon icon={faSignInAlt} />
                             </Link>
                         )}
                         {userInfo && <DropDown userInfo={userInfo} />}
                     </li>
                 </ul>
+                <span>
+                    <FontAwesomeIcon
+                        className='menuDropDownButton'
+                        onClick={menuDropDownHandler}
+                        icon={ico}
+                    />
+                </span>
+                <div className='dropDownFloatingContainer'>
+                    <span>
+                        {ico === faTimes && (
+                            <Link className='headerLink' to='/cart'>
+                                <FontAwesomeIcon icon={faShoppingCart} />
+                            </Link>
+                        )}
+                    </span>
+                    <span>
+                        {ico === faTimes && userInfo && userInfo.admin && (
+                            <AdminPanel response='click' />
+                        )}
+                    </span>
+                    <span>
+                        {ico === faTimes && userInfo && (
+                            <DropDown response='click' userInfo={userInfo} />
+                        )}
+                    </span>
+                </div>
             </div>
         </>
     )

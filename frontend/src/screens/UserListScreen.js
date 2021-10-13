@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { getUsersList } from '../actions/userActions'
-import UserPanel from '../components/UserPanel'
 
+import UserPanel from '../components/UserPanel'
 import Loading from '../components/Loading'
 import Message from '../components/Message'
 
@@ -26,7 +26,7 @@ const UserListScreen = () => {
                 <Message type='error'>{error}</Message>
             ) : (
                 usersList.length > 0 && (
-                    <table className='userTable'>
+                    <table className='defaultTable'>
                         <thead>
                             <tr>
                                 <th>Name</th>

@@ -13,3 +13,21 @@
     font-size: 1.3em;
     padding: 0.5em;
 }
+.orderItems {
+    margin: 1rem;
+}
+
+.backwardLink {
+    text-decoration: none;
+    padding: 0.5rem;
+    background-color: var(--grey);
+    margin: 1rem;
+    border-radius: 5px;
+    color: whitesmoke;
+    transition: 0.2s;
+}
+
+.backwardLink:hover {
+    background-color: orange;
+    color: var(--grey);
+}

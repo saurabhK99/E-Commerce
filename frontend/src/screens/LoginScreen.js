@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 
 import { useDispatch, useSelector } from 'react-redux'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
+
 import { userLogin } from '../actions/userActions'
 import Loading from '../components/Loading'
 import Message from '../components/Message'
@@ -30,7 +33,9 @@ const LoginScreen = ({ location, history }) => {
 
     return (
         <div className='userContainer'>
-            <span className='userPageHeading'>User Login</span>
+            <span className='userPageHeading'>
+                <FontAwesomeIcon icon={faUser} />
+            </span>
             {loading && <Loading />}
             {error && <Message type='error'>{error}</Message>}
             <form className='userForm' onSubmit={submitHandler}>

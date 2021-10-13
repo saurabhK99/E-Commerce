@@ -1,9 +1,15 @@
 import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+
 import { getOrder } from '../actions/orderActions'
+
 import Message from '../components/Message'
 import Loading from '../components/Loading'
 import OrderItem from '../components/OrderItem'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
 
 import './css/OrderDetailsScreen.css'
 
@@ -26,11 +32,22 @@ const OrderDetailsScreen = ({ match, history }) => {
             ) : (
                 orderDetails.orderItems && (
                     <div className='orderContainer'>
-                        <section className='orderItems'>
-                            <strong style={{ fontSize: '2em' }}>ITEMS</strong>
-                            {orderDetails.orderItems.map((item) => (
-                                <OrderItem item={item} key={orderDetails._id} />
-                            ))}
+                        <section>
+                            <Link className='backwardLink' to={'/profile'}>
+                                <FontAwesomeIcon icon={faLongArrowAltLeft} /> GO
+                                BACK
+                            </Link>
+                            <span className='orderItems'>
+                                <strong style={{ fontSize: '2em' }}>
+                                    ITEMS
+                                </strong>
+                                {orderDetails.orderItems.map((item) => (
+                                    <OrderItem
+                                        item={item}
+                                        key={orderDetails._id}
+                                    />
+                                ))}
+                            </span>
                         </section>
                         <section className='orderPrice'>
                             <div className='shippingDetails'>

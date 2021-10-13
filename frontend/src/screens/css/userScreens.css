@@ -6,16 +6,11 @@
     text-align: center;
     margin-top: 10vh;
     padding: 3em 4em;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .userContainer:hover {
     box-shadow: 0 16px 32px rgb(0, 0, 0, 0.2);
-}
-
-.userContainer:hover .userPageHeading {
-    top: -2px;
-    color: orange;
 }
 
 .userForm {
@@ -39,11 +34,7 @@
 }
 
 .userPageHeading {
-    position: relative;
-    top: 0;
-    font-size: 2em;
-    font-variant: small-caps;
-    transition: 0.3s;
+    font-size: 5rem;
 }
 
 .userActionButton {
@@ -51,8 +42,9 @@
     background-color: var(--grey);
     color: whitesmoke;
     border: none;
+    border-radius: 5px;
     height: 3rem;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .userActionButton:hover {
@@ -61,6 +53,27 @@
     border-radius: 5px;
 }
 
-.userTable {
+.defaultTable {
     width: 80%;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
+    margin: 2rem auto;
+    border-collapse: collapse;
+    border-radius: 5px;
+    font-size: 1.2rem;
+}
+
+.defaultTable th {
+    font-size: 1.5rem;
+    background-color: var(--grey);
+    color: whitesmoke;
+    text-transform: uppercase;
+}
+
+.defaultTable tr {
+    background-color: whitesmoke;
+    transition: 0.2s;
+}
+
+.defaultTable tr:hover {
+    background-color: orange;
 }

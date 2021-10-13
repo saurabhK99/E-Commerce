@@ -2,7 +2,8 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { getProductslist, removeProduct } from '../actions/productActions'
 
-import './css/ProductPanel.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 const ProductPanel = ({ info }) => {
     const dispatch = useDispatch()
@@ -15,25 +16,27 @@ const ProductPanel = ({ info }) => {
     }
 
     return (
-        <div className='productPanelContainer'>
-            <span className='poductPanelCol'>
+        <tr className='productPanelContainer'>
+            <td>
                 <img
-                    style={{ width: '8em', borderRadius: '5px' }}
+                    style={{ width: '6rem', borderRadius: '5px' }}
                     src={info.image}
                     alt='product '
                 />
-            </span>
-            <span style={{ flex: '0 0 15%' }}>{info.name}</span>
+            </td>
+            <td style={{ flex: '0 0 15%' }}>{info.name}</td>
 
-            <span>&#8377; {info.price}</span>
-            <span>Qty: {info.countInStock}</span>
+            <td>&#8377; {info.price}</td>
+            <td>Qty: {info.countInStock}</td>
 
-            <span>
-                <button className='deleteButton' onClick={deleteProductHandler}>
-                    Delete
-                </button>
-            </span>
-        </div>
+            <td>
+                <FontAwesomeIcon
+                    className='deleteUser'
+                    icon={faTrashAlt}
+                    onClick={deleteProductHandler}
+                />
+            </td>
+        </tr>
     )
 }
 

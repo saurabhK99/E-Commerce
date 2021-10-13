@@ -1,5 +1,11 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+
+import './css/CommonPanel.css'
+
 import { getUsersList, userRemove } from '../actions/userActions'
 
 const UserPanel = ({ info }) => {
@@ -18,9 +24,11 @@ const UserPanel = ({ info }) => {
             <td>{info.email}</td>
             <td>{info.isAdmin ? 'Yes' : 'No'}</td>
             <td>
-                <button className='deleteUser' onClick={deleteUserHandler}>
-                    Delete
-                </button>
+                <FontAwesomeIcon
+                    className='deleteUser'
+                    icon={faTrashAlt}
+                    onClick={deleteUserHandler}
+                />
             </td>
         </tr>
     )

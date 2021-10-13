@@ -1,0 +1,56 @@
+.addProductTable {
+    width: 80%;
+    margin: auto;
+    margin-top: 2rem;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
+    background-color: whitesmoke;
+    border-spacing: 1rem;
+    text-transform: uppercase;
+}
+
+.addProductTable thead {
+    color: whitesmoke;
+    font-size: 1.5rem;
+    background-color: var(--grey);
+}
+
+.addProductTable select {
+    width: 80%;
+    font-size: 1.1rem;
+    text-align: center;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    border: 0.5px solid rgba(0, 0, 0, 0.3);
+    transition: 0.2s;
+}
+
+.addProductTable input,
+textarea {
+    width: 80%;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    border: 0.5px solid rgba(0, 0, 0, 0.3);
+    background-color: whitesmoke;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.addProductTable .addProductButton {
+    width: fit-content;
+    border: none;
+    background-color: var(--grey);
+    color: whitesmoke;
+    font-size: 1.2rem;
+    transition: 0.2s;
+}
+
+.addProductButton:hover {
+    background-color: orange;
+    color: var(--grey);
+}
+
+.addProductTable .imageInput {
+    border: none;
+}

@@ -1,13 +1,12 @@
 .headerContainer {
     position: relative;
     background-color: var(--grey);
-    padding: 1.6em;
+    padding: 1.6rem 0 1rem 2rem;
     z-index: 1;
 }
 
-.headerH1 {
-    display: inline-block;
-    color: whitesmoke;
+.mainLogo img {
+    width: 2.5rem;
 }
 
 .headerUl {
@@ -18,10 +17,10 @@
 
 .headerLink {
     text-decoration: none;
-    margin: 1em;
+    margin: 1rem;
     font-size: 1.3em;
     color: whitesmoke;
-    padding: 1em;
+    padding: 1rem;
     border-radius: 5px;
 }
 
@@ -31,8 +30,11 @@
 
 .headerSearchBox {
     display: flex;
+    position: absolute;
+    top: 1.5rem;
+    left: 30%;
     margin: 0 2em;
-    /* border: 1px solid red; */
+
     align-items: center;
 }
 
@@ -50,4 +52,53 @@
 
 .searchBoxButton:hover {
     border: 1px solid whitesmoke;
+}
+
+.menuDropDownButton {
+    display: none;
+    position: absolute;
+    color: whitesmoke;
+    right: 2rem;
+    font-size: 1.5rem;
+    top: 1.9rem;
+    cursor: pointer;
+}
+
+.dropDownFloatingContainer {
+    display: inline-block;
+    padding: 1rem 0;
+    border-radius: 5px;
+    position: absolute;
+    top: 5rem;
+    right: 0;
+    background-color: var(--grey);
+}
+
+@media only screen and (max-width: 1060px) {
+    .responsiveLi {
+        display: none;
+    }
+
+    .headerSearchBox {
+        left: 20%;
+    }
+
+    .menuDropDownButton {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 530px) {
+    .headerContainer {
+        height: 6rem;
+    }
+
+    .headerSearchBox {
+        display: flex;
+        justify-content: center;
+        top: 5rem;
+        left: 0;
+        width: 100%;
+        margin: 0 auto;
+    }
 }

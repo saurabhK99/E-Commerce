@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom'
 
 import { useDispatch, useSelector } from 'react-redux'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUserCog } from '@fortawesome/free-solid-svg-icons'
+
 import { userRegistration } from '../actions/userActions'
 
 import Message from '../components/Message'
@@ -37,7 +40,9 @@ const RegisterScreen = () => {
 
     return (
         <div className='userContainer'>
-            <span className='userPageHeading'>User Registration</span>
+            <span className='userPageHeading'>
+                <FontAwesomeIcon icon={faUserCog} />
+            </span>
             {status && status.success && (
                 <Message type='success'>{status.success}</Message>
             )}
