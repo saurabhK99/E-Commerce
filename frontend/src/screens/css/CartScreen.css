@@ -61,5 +61,12 @@
 
     .checkoutSection {
         flex-basis: 100%;
+        font-size: 1.5rem;
+    }
+}
+
+@media only screen and (max-width: 530px) {
+    .checkoutSection {
+        font-size: 1.2rem;
     }
 }

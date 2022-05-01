@@ -12,3 +12,17 @@
 .itemContainer strong {
     margin: auto 1em;
 }
+
+@media only screen and (max-width: 1400px) {
+    .itemContainer {
+        font-size: 16px;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .itemContainer {
+        font-size: 13px;
+    }
+}

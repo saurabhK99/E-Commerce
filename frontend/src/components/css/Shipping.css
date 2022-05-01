@@ -39,3 +39,32 @@
     background-color: orange;
     color: var(--grey);
 }
+
+@media only screen and (max-width: 1400px) {
+    .shippingForm {
+        flex-direction: column;
+    }
+
+    .shippingForm input {
+        font-size: 16px;
+    }
+
+    .shippingUpdateButton {
+        position: static;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .shippingContainer {
+        width: 90vw;
+        margin-left: 1rem;
+    }
+
+    .shippingForm input {
+        font-size: 12px;
+    }
+
+    .shippingForm {
+        width: 100%;
+    }
+}

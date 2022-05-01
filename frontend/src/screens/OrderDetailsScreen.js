@@ -51,20 +51,8 @@ const OrderDetailsScreen = ({ match, history }) => {
                         </section>
                         <section className='orderPrice'>
                             <div className='shippingDetails'>
-                                <strong
-                                    style={{
-                                        fontSize: '2em',
-                                        margin: '1rem',
-                                    }}
-                                >
-                                    Shipping Address
-                                </strong>
-                                <strong
-                                    style={{
-                                        fontSize: '1.2em',
-                                        margin: '1rem',
-                                    }}
-                                >
+                                <strong>Shipped To</strong>
+                                <strong>
                                     {`${orderDetails.shippingAddress.address},
                          ${orderDetails.shippingAddress.city},
                           ${orderDetails.shippingAddress.state} -

@@ -22,30 +22,35 @@ const CartItem = ({ item, disable }) => {
                 <span className='itemDetails'>
                     <strong>{item.name}</strong>
                     <strong>&#8377; {item.price}</strong>
-                    <select
-                        className='selectContainer'
-                        name='qty'
-                        id='qty-id'
-                        value={item.qty}
-                        onChange={(e) =>
-                            dispatch(
-                                addToCart(item.product, Number(e.target.value))
-                            )
-                        }
-                    >
-                        {[...Array(item.countInStock).keys()].map((k) => (
-                            <option key={k + 1} value={k + 1}>
-                                {k + 1}
-                            </option>
-                        ))}
-                    </select>
+                    <span className='qtyContainer'>
+                        <select
+                            className='selectContainer'
+                            name='qty'
+                            id='qty-id'
+                            value={item.qty}
+                            onChange={(e) =>
+                                dispatch(
+                                    addToCart(
+                                        item.product,
+                                        Number(e.target.value)
+                                    )
+                                )
+                            }
+                        >
+                            {[...Array(item.countInStock).keys()].map((k) => (
+                                <option key={k + 1} value={k + 1}>
+                                    {k + 1}
+                                </option>
+                            ))}
+                        </select>
+                        <button
+                            className={`removeItemButton ${disable}`}
+                            onClick={removeHandler}
+                        >
+                            <FontAwesomeIcon icon={faTrashAlt} />
+                        </button>
+                    </span>
                 </span>
-                <button
-                    className={`removeItemButton ${disable}`}
-                    onClick={removeHandler}
-                >
-                    <FontAwesomeIcon icon={faTrashAlt} />
-                </button>
             </div>
         </>
     )

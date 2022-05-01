@@ -1,6 +1,6 @@
 .cartItemContainer {
     display: flex;
-    height: 22vh;
+    height: max-content;
     margin: 1em;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     padding: 1rem 2em;
@@ -10,10 +10,18 @@
     text-align: center;
 }
 
+.qtyContainer {
+    display: flex;
+}
+
 .cartItemContainer img {
     height: 20vh;
     box-shadow: 0 4px 8px 0 rgb(0, 0, 0, 0.3);
     border-radius: 5px;
+}
+
+.detailsContainer {
+    display: flex;
 }
 
 .itemDetails {
@@ -26,8 +34,9 @@
 
 .removeItemButton {
     border: none;
+    margin: 0 1rem;
     border-radius: 5px;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     background-color: whitesmoke;
     color: var(--grey);
     transition: 0.2s;
@@ -36,4 +45,10 @@
 
 .removeItemButton:hover {
     color: orange;
+}
+
+@media only screen and (max-width: 530px) {
+    .cartItemContainer {
+        flex-direction: column;
+    }
 }

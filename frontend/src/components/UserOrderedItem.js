@@ -12,7 +12,7 @@ const UserOrderedItem = ({ orders }) => {
         <div className='orderedItemContainer'>
             <strong style={{ fontSize: '2em' }}>ORDERS</strong>
             <div className='shadow'>
-                <table style={{ borderSpacing: '3em 1em' }}>
+                <table className='ordersTable'>
                     <thead>
                         <tr>
                             <th>

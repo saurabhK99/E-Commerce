@@ -8,6 +8,11 @@
     box-shadow: 0 4px 4px rgb(0, 0, 0, 0.3);
 }
 
+.ordersTable {
+    width: 100%;
+    border-spacing: 2em 1em;
+}
+
 td {
     text-align: center;
 }
@@ -20,4 +25,29 @@ td {
 
 .moreInfoIcon:hover {
     color: orange;
+}
+
+@media only screen and (max-width: 1060px) {
+    .orderedItemContainer {
+        width: 95%;
+    }
+
+    .ordersTable tr {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    .orderedItemContainer {
+        width: 100%;
+        margin: 0px;
+    }
+
+    .ordersTable {
+        margin-left: 0;
+        border-spacing: 0.5rem 1rem;
+    }
+    .ordersTable tr {
+        font-size: 12px;
+    }
 }

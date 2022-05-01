@@ -25,10 +25,11 @@ const DropDown = ({ userInfo, response }) => {
 
     const userClickHandler = () => {
         const elements = document.querySelectorAll('.user')
+        let elem
 
-        let elem = elements[1].classList
+        if (elements && elements[1]) elem = elements[1].classList
 
-        if (elem.contains('dropDownClickContainer')) {
+        if (elem && elem.contains('dropDownClickContainer')) {
             if (elem.contains('disableCurrent'))
                 setContainerName('dropDownClickContainer')
             else setContainerName('dropDownClickContainer disableCurrent')

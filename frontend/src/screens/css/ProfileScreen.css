@@ -31,3 +31,40 @@
     background-color: orange;
     color: var(--grey);
 }
+
+@media only screen and (max-width: 1060px) {
+    .userProfileContainer {
+        position:fixed;
+        top: 4.5rem;
+        width: 60vw;
+        background-color: orange;
+    }
+
+    .toggleUpdateButton {
+        top: 5rem;
+    }
+
+    .userProfileForm {
+        width: 100%;
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 530px) {
+    .userProfileContainer {
+        position:fixed;
+        font-size: 12px;
+        top: 4.5rem;
+        width: 60vw;
+        background-color: orange;
+    }
+
+    .toggleUpdateButton {
+        top: 8rem;
+    }
+
+    .userProfileForm input {
+        font-size: 12px;
+    }
+}
+

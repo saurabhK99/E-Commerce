@@ -57,3 +57,34 @@
     width: 85%;
     border-spacing: 5em 1em;
 }
+@media only screen and (max-width: 1400px) {
+    .totalPriceContainer {
+        flex-direction: column;
+    }
+
+    .totalPriceContainer {
+        font-size: 18px;
+
+    }
+
+    .orderActionButton, .orderPayButton {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .orderContainer {
+        flex-direction: column;
+    }
+
+    .totalPriceContainer {
+        flex-direction: column;
+        width: 100vw;
+        font-size: 16px;
+
+    }
+
+    .priceTable {
+        border-spacing: 1em 1em;
+    }
+}
