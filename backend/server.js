@@ -22,5 +22,13 @@ app.use('/api/users', userRoute)
 app.use('/api/orders', orderRoute)
 app.use('/api/uploads', uploadRoute)
 
+if(process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(path.resolve(), '/frontend/build')))
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(path.resolve(), 'frontend', 'build', 'index.html'))
+    })
+}
+
 let PORT = process.env.PORT || 5000
 app.listen(PORT, console.log(`Listening on port ${PORT}...`))
