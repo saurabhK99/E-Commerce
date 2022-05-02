@@ -113,7 +113,7 @@ const ProductScreen = ({ history, match }) => {
                         {userInfo && (
                             <input
                                 type='button'
-                                className='reviewButton floatingButton'
+                                className='reviewButton'
                                 onClick={showReviewHandler}
                                 value='Add Review'
                             />

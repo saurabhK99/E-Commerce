@@ -44,7 +44,7 @@ const Header = () => {
         <>
             <div className='headerContainer'>
                 <Link to='/' className='mainLogo'>
-                    <img src='logo/mainLogo.png' alt='website logo' />
+                    e-com
                 </Link>
                 <span className='headerSearchBox'>
                     <input
@@ -58,7 +58,7 @@ const Header = () => {
                             icon={faSearch}
                             style={{
                                 color: 'whitesmoke',
-                                fontSize: '1.5em',
+                                fontSize: '1.2em',
                             }}
                         />
                     </button>
@@ -73,6 +73,7 @@ const Header = () => {
                     <li className='responsiveLi'>
                         {userInfo && userInfo.admin && <AdminPanel />}
                     </li>
+
                     <li className='responsiveLi'>
                         {!userInfo && (
                             <Link className='headerLink' to='/login'>
@@ -92,19 +93,38 @@ const Header = () => {
                 <div className='dropDownFloatingContainer'>
                     <span>
                         {ico === faTimes && (
-                            <Link className='headerLink' to='/cart'>
+                            <Link
+                                className='headerLink'
+                                to='/cart'
+                                onClick={menuDropDownHandler}
+                            >
                                 <FontAwesomeIcon icon={faShoppingCart} />
                             </Link>
                         )}
                     </span>
                     <span>
+                        {ico === faTimes && !userInfo && (
+                            <Link
+                                className='headerLink'
+                                to='/login'
+                                onClick={menuDropDownHandler}
+                            >
+                                <FontAwesomeIcon icon={faSignInAlt} />
+                            </Link>
+                        )}
+                    </span>
+                    <span>
                         {ico === faTimes && userInfo && userInfo.admin && (
-                            <AdminPanel response='click' />
+                            <AdminPanel response='click' setIcon={setIco} />
                         )}
                     </span>
                     <span>
                         {ico === faTimes && userInfo && (
-                            <DropDown response='click' userInfo={userInfo} />
+                            <DropDown
+                                response='click'
+                                userInfo={userInfo}
+                                setIcon={setIco}
+                            />
                         )}
                     </span>
                 </div>

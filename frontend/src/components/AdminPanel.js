@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { faUserEdit } from '@fortawesome/free-solid-svg-icons'
+import { faUserEdit, faBars } from '@fortawesome/free-solid-svg-icons'
 
-const AdminPanel = ({ response }) => {
+const AdminPanel = ({ response, setIcon }) => {
     const [containerName, setContainerName] = useState(
         response ? 'dropDownClickContainer disableCurrent' : 'dropDownContainer'
     )
@@ -18,7 +18,10 @@ const AdminPanel = ({ response }) => {
         if (elem.contains('dropDownClickContainer')) {
             if (elem.contains('disableCurrent'))
                 setContainerName('dropDownClickContainer')
-            else setContainerName('dropDownClickContainer disableCurrent')
+            else {
+                setContainerName('dropDownClickContainer disableCurrent')
+                setIcon(faBars)
+            }
         }
     }
 
@@ -29,15 +32,15 @@ const AdminPanel = ({ response }) => {
                     onClick={adminClickHandler}
                     icon={faUserEdit}
                 />
-
+                
                 <div className={`${containerName} admin`}>
-                    <Link className='dropDownLink' to='/admin/users'>
+                    <Link className='dropDownLink' to='/admin/users' onClick={adminClickHandler}>
                         User Profiles
                     </Link>
-                    <Link className='dropDownLink' to='/admin/products'>
+                    <Link className='dropDownLink' to='/admin/products' onClick={adminClickHandler}>
                         Products
                     </Link>
-                    <Link className='dropDownLink' to='/admin/orders'>
+                    <Link className='dropDownLink' to='/admin/orders' onClick={adminClickHandler}>
                         Orders
                     </Link>
                 </div>

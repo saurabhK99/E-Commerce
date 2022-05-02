@@ -8,10 +8,6 @@ MERN tech stack is used to build this project.
 
 **npm run server**
 
-**npm run build**
-
-**npm install**
-
 **npm run data:insert**
 
 **npm run data:destroy**

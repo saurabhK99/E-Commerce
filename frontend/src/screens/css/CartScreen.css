@@ -16,7 +16,7 @@
     margin-top: 2em;
     padding: 2rem;
     flex-basis: 30%;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     flex-direction: column;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     border-radius: 5px;
@@ -61,12 +61,16 @@
 
     .checkoutSection {
         flex-basis: 100%;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 }
 
 @media only screen and (max-width: 530px) {
     .checkoutSection {
-        font-size: 1.2rem;
+        font-size: 1rem;
+    }
+
+    .checkoutSection span {
+        margin: 0.5rem;
     }
 }

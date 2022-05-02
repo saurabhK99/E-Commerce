@@ -100,17 +100,12 @@
 .reviewButton {
     font-size: 1.2rem;
     padding: 0.5rem;
-    margin-left: 1rem;
+    margin: 1rem;
     background-color: var(--grey);
     color: whitesmoke;
     border: none;
     border-radius: 5px;
     transition: 0.2s;
-}
-
-.floatingButton {
-    position: absolute;
-    top: 0;
 }
 
 .reviewButton:hover {
@@ -135,7 +130,7 @@
 
 .selectContainer {
     margin: 0.5rem;
-    font-size: 1rem;
+    font-size: 0.8rem;
     background-color: orange;
     color: var(--grey);
     border: none;
@@ -157,8 +152,14 @@
 
     .priceContainer {
         flex-basis: 40%;
+        font-size: 1.1rem;
+    }
+
+    .reviewsContainer {
+        font-size: 1.1rem;
     }
 }
+
 
 @media only screen and (max-width: 1060px) {
     .productSpecContainer {
@@ -172,9 +173,19 @@
     .priceContainer {
         margin-top: 3rem;
         flex-basis: 100%;
+        font-size: 1rem;
     }
 
     .reviewForm {
         flex-direction: column;
+    }
+
+     .reviewHeading {
+        font-size: 1.2rem;
+     }
+
+    .reviewsContainer, .reviewButton {
+        font-size: 1rem;
+        margin: 0 0 1rem 0;
     }
 }

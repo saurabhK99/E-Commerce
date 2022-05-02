@@ -1,12 +1,9 @@
 .shippingContainer {
     display: flex;
     flex-direction: column;
-    height: fit-content;
     margin-bottom: 5em;
     border-radius: 5px;
     padding: 1em;
-    overflow: hidden;
-
     box-shadow: 0 4px 8px rgb(0, 0, 0, 0.3);
 }
 
@@ -56,15 +53,10 @@
 
 @media only screen and (max-width: 1000px) {
     .shippingContainer {
-        width: 90vw;
-        margin-left: 1rem;
+        width: 95%;
     }
 
     .shippingForm input {
         font-size: 12px;
-    }
-
-    .shippingForm {
-        width: 100%;
     }
 }

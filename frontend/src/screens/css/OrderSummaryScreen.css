@@ -64,7 +64,6 @@
 
     .totalPriceContainer {
         font-size: 18px;
-
     }
 
     .orderActionButton, .orderPayButton {
@@ -79,7 +78,7 @@
 
     .totalPriceContainer {
         flex-direction: column;
-        width: 100vw;
+        width: 100%;
         font-size: 16px;
 
     }

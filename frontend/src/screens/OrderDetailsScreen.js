@@ -38,7 +38,7 @@ const OrderDetailsScreen = ({ match, history }) => {
                                 BACK
                             </Link>
                             <span className='orderItems'>
-                                <strong style={{ fontSize: '2em' }}>
+                                <strong style={{ fontSize: '1.5em' }}>
                                     ITEMS
                                 </strong>
                                 {orderDetails.orderItems.map((item) => (

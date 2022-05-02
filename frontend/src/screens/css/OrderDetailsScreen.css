@@ -7,6 +7,7 @@
 }
 
 .deliveryStatus {
+    display: block;
     text-align: center;
     margin-top: 2em;
     box-shadow: 0 4px 4px rgb(0, 0, 0, 0.3);
@@ -23,7 +24,7 @@
     text-decoration: none;
     padding: 0.5rem;
     background-color: var(--grey);
-    margin: 1rem;
+    font-size: 12px;
     border-radius: 5px;
     color: whitesmoke;
     transition: 0.2s;
@@ -37,7 +38,11 @@
 
 @media only screen and (max-width: 1000px) {
     .shippingDetails, .deliveryStatus {
+        margin: 0.5rem;
         font-size: 16px;
-        width: 100vw;
+    }
+
+    .orderPrice {
+        width: 100%;
     }
 }

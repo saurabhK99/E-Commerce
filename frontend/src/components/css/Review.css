@@ -15,3 +15,9 @@
 .reviewerComment {
     margin: 1rem;
 }
+
+@media only screen and (max-height: 1060px) {
+    .reviewerName {
+        font-size: 1.1rem;
+    }
+}

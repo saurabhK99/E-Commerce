@@ -5,8 +5,12 @@
     z-index: 1;
 }
 
-.mainLogo img {
-    width: 2.5rem;
+.mainLogo {
+    text-decoration: none;
+    color: whitesmoke;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 .headerUl {
@@ -18,9 +22,9 @@
 .headerLink {
     text-decoration: none;
     margin: 1rem;
-    font-size: 1.3em;
+    font-size: 1.2rem;
     color: whitesmoke;
-    padding: 1rem;
+    padding: 0.5rem;
     border-radius: 5px;
 }
 
@@ -59,7 +63,7 @@
     position: absolute;
     color: whitesmoke;
     right: 2rem;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     top: 1.9rem;
     cursor: pointer;
 }
@@ -68,8 +72,8 @@
     display: inline-block;
     padding: 1rem 0;
     border-radius: 5px;
-    position: absolute;
-    top: 5rem;
+    position: fixed;
+    top: 0.5rem;
     right: 0;
     background-color: var(--grey);
 }
@@ -90,7 +94,7 @@
 
 @media only screen and (max-width: 530px) {
     .headerContainer {
-        height: 6rem;
+        height: 5rem;
     }
 
     .headerSearchBox {

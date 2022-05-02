@@ -2,7 +2,11 @@ import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSignOutAlt, faUserCircle } from '@fortawesome/free-solid-svg-icons'
+import {
+    faSignOutAlt,
+    faUserCircle,
+    faBars,
+} from '@fortawesome/free-solid-svg-icons'
 
 import { userLogout } from '../actions/userActions'
 
@@ -10,7 +14,7 @@ import { useDispatch } from 'react-redux'
 
 import './css/DropDown.css'
 
-const DropDown = ({ userInfo, response }) => {
+const DropDown = ({ userInfo, response, setIcon }) => {
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -32,7 +36,10 @@ const DropDown = ({ userInfo, response }) => {
         if (elem && elem.contains('dropDownClickContainer')) {
             if (elem.contains('disableCurrent'))
                 setContainerName('dropDownClickContainer')
-            else setContainerName('dropDownClickContainer disableCurrent')
+            else {
+                setContainerName('dropDownClickContainer disableCurrent')
+                setIcon(faBars)
+            }
         }
     }
 
