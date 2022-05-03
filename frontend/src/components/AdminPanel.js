@@ -13,9 +13,10 @@ const AdminPanel = ({ response, setIcon }) => {
     const adminClickHandler = () => {
         const elements = document.querySelectorAll('.admin')
 
-        let elem = elements[1].classList
+        let elem
+        if(elements && elements[1]) elem = elements[1].classList
 
-        if (elem.contains('dropDownClickContainer')) {
+        if (elem && elem.contains('dropDownClickContainer')) {
             if (elem.contains('disableCurrent'))
                 setContainerName('dropDownClickContainer')
             else {

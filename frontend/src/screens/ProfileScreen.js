@@ -19,6 +19,7 @@ const ProfileScreen = () => {
 
     const userProfile = useSelector((s) => s.userProfile)
     const orders = useSelector((s) => s.orders.orders)
+    const profileStatus = useSelector((s) => s.userUpdateStatus)
 
     const { profile } = userProfile
 
@@ -46,18 +47,18 @@ const ProfileScreen = () => {
 
         let npass = document.getElementById('npass').value
         let cpass = document.getElementById('cpass').value
-
+        
+        
         if (npass && cpass) {
             if (npass === cpass) {
                 updateInfo = { ...updateInfo, password: npass }
+                dispatch(userUpdateProfile(updateInfo))
+
             } else {
-                console.log('pass did not match!!!')
+                alert("Password did not matched!")
             }
         }
-        dispatch(userUpdateProfile(updateInfo))
     }
-
-    const profileStatus = useSelector((s) => s.userUpdateStatus)
 
     return (
         <>
@@ -94,7 +95,7 @@ const ProfileScreen = () => {
                         placeholder='Full Name'
                     />
                     <input
-                        type='text'
+                        type='email'
                         className='userInput'
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}

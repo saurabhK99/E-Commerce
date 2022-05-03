@@ -25,6 +25,17 @@ export const createOrder = async (req, res) => {
     }
 }
 
+export const deleteOrder = async (req, res) => {
+    try {
+        await Order.findByIdAndDelete(req.body.id)
+        
+        res.status(200).json({status: "Order removed successfully!"})
+
+    } catch(err) {
+        res.status(400).json({error: err.message})
+    }
+}
+
 export const updatePayment = async (req, res) => {
     try {
         const order = await Order.findById(req.body.id)
@@ -65,7 +76,7 @@ export const getOrder = async (req, res) => {
 
 export const getAllOrders = async (req, res) => {
     try {
-        const orders = await Order.find({ user: req.userId, isPaid: true })
+        const orders = await Order.find({ user: req.userId})
 
         res.json(orders)
     } catch (err) {

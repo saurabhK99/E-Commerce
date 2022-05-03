@@ -17,6 +17,9 @@ import {
     ORDER_DELIVER_REQUEST,
     ORDER_DELIVER_SUCCESS,
     ORDER_DELIVER_FAIL,
+    ORDER_REMOVE_REQUEST,
+    ORDER_REMOVE_SUCCESS,
+    ORDER_REMOVE_FAIL,
 } from '../constants/orderConstants'
 
 export const orderCreateReducer = (state = { orderInfo: {} }, action) => {
@@ -112,6 +115,22 @@ export const orderDeliverReducer = (state = { status: {} }, action) => {
 
         case ORDER_DELIVER_FAIL:
             return { loading: false, status: action.payload }
+
+        default:
+            return { ...state }
+    }
+}
+
+export const orderRemoveReducer = (state = { status: {} }, action) => {
+    switch (action.type) {
+        case ORDER_REMOVE_REQUEST:
+            return { loading: true }
+
+        case ORDER_REMOVE_SUCCESS:
+            return { loading: false, status: action.payload }
+
+        case ORDER_REMOVE_FAIL:
+            return { loading: false, error: action.payload }
 
         default:
             return { ...state }

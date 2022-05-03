@@ -1,13 +1,22 @@
 import React from 'react'
 
+import { useDispatch } from 'react-redux'
+import { orderRemove } from '../actions/orderActions'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import { faInfoCircle, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 import { Link } from 'react-router-dom'
 
 import './css/UserOrderedItem.css'
 
 const UserOrderedItem = ({ orders }) => {
+    const dispatch = useDispatch()
+
+    const removeOrderHandler = (orderId) => {
+        dispatch(orderRemove(orderId))
+    }
+
     return (
         <div className='orderedItemContainer'>
             <strong style={{ fontSize: '2em' }}>ORDERS</strong>
@@ -41,7 +50,22 @@ const UserOrderedItem = ({ orders }) => {
                                             <span>Pending</span>
                                         )}
                                     </td>
-                                    <td>Paid</td>
+                                    <td>
+                                        {item.isPaid ? (
+                                            <span>Paid</span>
+                                        ) : (
+                                            <span
+                                                onClick={() =>
+                                                    removeOrderHandler(item._id)
+                                                }
+                                            >
+                                                <FontAwesomeIcon
+                                                    className='removeOrderButton'
+                                                    icon={faTrashAlt}
+                                                />
+                                            </span>
+                                        )}
+                                    </td>
                                     <td>
                                         <Link to={`/order/${item._id}`}>
                                             <FontAwesomeIcon

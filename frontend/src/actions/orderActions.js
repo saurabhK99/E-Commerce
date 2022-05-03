@@ -17,6 +17,9 @@ import {
     ORDER_DELIVER_REQUEST,
     ORDER_DELIVER_SUCCESS,
     ORDER_DELIVER_FAIL,
+    ORDER_REMOVE_REQUEST,
+    ORDER_REMOVE_SUCCESS,
+    ORDER_REMOVE_FAIL,
 } from '../constants/orderConstants'
 
 import axios from 'axios'
@@ -161,6 +164,34 @@ export const orderSetDelivered = (id) => async (dispatch, getState) => {
         dispatch({
             type: ORDER_DELIVER_FAIL,
             error: err.response ? err.response.data.error : err.message,
+        })
+    }
+}
+
+export const orderRemove = (orderId) => async (dispatch, getState) => {
+    const token =
+        getState().userLogin.userInfo && getState().userLogin.userInfo.token
+
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        },
+        data: {
+            id: orderId,
+        },
+    }
+
+    try {
+        dispatch({ type: ORDER_REMOVE_REQUEST })
+
+        const { data } = await axios.delete('/api/orders', config)
+
+        dispatch({ type: ORDER_REMOVE_SUCCESS, payload: data })
+    } catch (err) {
+        dispatch({
+            type: ORDER_REMOVE_FAIL,
+            payload: err.response ? err.response.data.error : err.message,
         })
     }
 }

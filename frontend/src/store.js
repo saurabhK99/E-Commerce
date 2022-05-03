@@ -28,6 +28,7 @@ import {
     orderPayReducer,
     orderAdminGetAllReducer,
     orderDeliverReducer,
+    orderRemoveReducer,
 } from './reducers/orderReducers'
 
 const cartItemFromStorage = localStorage['cartItems']
@@ -59,6 +60,7 @@ const reducer = combineReducers({
     productReviewStatus: productReviewReducer,
     orderDeliverStatus: orderDeliverReducer,
     filter: filterReducer,
+    orderRemoveStatus: orderRemoveReducer
 })
 
 const initialState = {

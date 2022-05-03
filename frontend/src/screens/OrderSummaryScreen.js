@@ -37,13 +37,13 @@ const OrderSummaryScreen = ({ history }) => {
 
         setTotalPrice(total)
 
-        // if (orderCreated) {
-        //     const orderBtn = document.querySelector('.orderActionButton')
-        //     const payBtn = document.querySelector('.orderPayButton')
+        if (orderCreated) {
+            const orderBtn = document.querySelector('.orderActionButton')
+            const payBtn = document.querySelector('.orderPayButton')
 
-        //     payBtn.classList.remove('disableCurrent')
-        //     orderBtn.classList.add('disableCurrent')
-        // }
+            payBtn.classList.remove('disableCurrent')
+            orderBtn.classList.add('disableCurrent')
+        }
 
         if (payStatus) {
             history.push('/payment-success')
@@ -160,13 +160,13 @@ const OrderSummaryScreen = ({ history }) => {
                     </button>
                 </div>
 
-                {/* <button
+                <button
                     style={{ alignSelf: 'center', width: '95%' }}
                     onClick={payHandler}
                     className=' disableCurrent orderPayButton'
                 >
                     PAY WITH RAZORPAY
-                </button> */}
+                </button>
             </section>
         </div>
     )
