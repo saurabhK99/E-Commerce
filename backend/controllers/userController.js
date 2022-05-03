@@ -35,7 +35,6 @@ export const authUser = async (req, res, next) => {
         if (!isUser) {
             res.status(400)
             res.json({ error: 'User not found!' })
-            return
         }
         const isAuth = await bcrypt.compare(password, isUser.password)
 

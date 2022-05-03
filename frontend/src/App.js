@@ -11,7 +11,6 @@ import LoginScreen from './screens/LoginScreen'
 import RegisterScreen from './screens/RegisterScreen'
 import ProfileScreen from './screens/ProfileScreen'
 import OrderSummaryScreen from './screens/OrderSummaryScreen'
-import PaymentSuccessScreen from './screens/PaymentSuccessScreen'
 import OrderDetailsScreen from './screens/OrderDetailsScreen'
 import UserListScreen from './screens/UserListScreen'
 import ProductListScreen from './screens/ProductListScreen'
@@ -33,10 +32,6 @@ const App = () => {
                     <Route
                         path='/order-summary'
                         component={OrderSummaryScreen}
-                    />
-                    <Route
-                        path='/payment-success'
-                        component={PaymentSuccessScreen}
                     />
                     <Route path='/order/:id' component={OrderDetailsScreen} />
                     <Route path='/admin/users' component={UserListScreen} />

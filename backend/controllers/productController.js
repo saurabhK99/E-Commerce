@@ -26,7 +26,6 @@ const getAllProducts = async (req, res) => {
         res.status(200).json({ products, page, pages })
     } catch (err) {
         res.status(404).json({ error: err.message })
-        process.exit(1)
     }
 }
 
@@ -40,7 +39,6 @@ const getProductById = async (req, res) => {
         }
     } catch (err) {
         res.status(404).json({ error: err.message })
-        process.exit(1)
     }
 }
 
@@ -85,7 +83,6 @@ const getAllProductsForAdmin = async (req, res) => {
         res.status(200).json(products)
     } catch (err) {
         res.status(404).json({ error: err.message })
-        process.exit(1)
     }
 }
 

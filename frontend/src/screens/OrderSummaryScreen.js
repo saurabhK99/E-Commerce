@@ -46,7 +46,7 @@ const OrderSummaryScreen = ({ history }) => {
         }
 
         if (payStatus) {
-            history.push('/payment-success')
+            history.push('/profile')
         }
     }, [cartItems, history, payStatus, orderCreated])
 
