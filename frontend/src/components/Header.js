@@ -11,6 +11,8 @@ import {
     faTimes,
     faShoppingCart,
     faSignInAlt,
+    faHome,
+    faUserEdit,
 } from '@fortawesome/free-solid-svg-icons'
 
 import DropDown from '../components/DropDown'
@@ -21,7 +23,7 @@ import { listProducts } from '../actions/productActions'
 
 const Header = () => {
     const [filter, setFilter] = useState('')
-    const [ico, setIco] = useState(faBars)
+    const [ico, setIco] = useState(faTimes)
 
     const dispatch = useDispatch()
 
@@ -35,98 +37,88 @@ const Header = () => {
     }
 
     const menuDropDownHandler = () => {
+        const header = document.querySelector('.headerUl').classList
+
         if (ico === faBars) {
             setIco(faTimes)
-        } else setIco(faBars)
+            header.remove('disableCurrent')
+        } else {
+            setIco(faBars)
+            header.add('disableCurrent')
+        }
     }
 
     return (
         <>
             <div className='headerContainer'>
                 <Link to='/' className='mainLogo'>
-                    e-com
+                    <img src='images/mainLogo.png' alt='e-com' />
                 </Link>
                 <span className='headerSearchBox'>
                     <input
                         className='searchBoxInput'
                         type='text'
+                        placeholder='Search E-Commerce'
                         value={filter}
                         onChange={(e) => setFilter(e.target.value)}
                     />
                     <button className='searchBoxButton' onClick={searchHandler}>
-                        <FontAwesomeIcon
-                            icon={faSearch}
-                            style={{
-                                color: 'whitesmoke',
-                                fontSize: '1.2em',
-                            }}
-                        />
+                        <FontAwesomeIcon icon={faSearch} />
                     </button>
                 </span>
                 <ul className='headerUl'>
-                    <li className='responsiveLi'>
+                    <li>
                         <Link className='headerLink' to='/cart'>
                             <FontAwesomeIcon icon={faShoppingCart} />
                         </Link>
                     </li>
 
-                    <li className='responsiveLi'>
-                        {userInfo && userInfo.admin && <AdminPanel />}
+                    <li>
+                        {userInfo && (
+                            <Link className='headerLink' to='/admin'>
+                                <FontAwesomeIcon icon={faUserEdit} />
+                            </Link>
+                        )}
                     </li>
 
-                    <li className='responsiveLi'>
+                    <li>
                         {!userInfo && (
                             <Link className='headerLink' to='/login'>
                                 <FontAwesomeIcon icon={faSignInAlt} />
                             </Link>
                         )}
-                        {userInfo && <DropDown userInfo={userInfo} />}
-                    </li>
-                </ul>
-                <span>
-                    <FontAwesomeIcon
-                        className='menuDropDownButton'
-                        onClick={menuDropDownHandler}
-                        icon={ico}
-                    />
-                </span>
-                <div className='dropDownFloatingContainer'>
-                    <span>
-                        {ico === faTimes && (
-                            <Link
-                                className='headerLink'
-                                to='/cart'
-                                onClick={menuDropDownHandler}
-                            >
-                                <FontAwesomeIcon icon={faShoppingCart} />
+                        {userInfo && (
+                            <Link className='headerLink' to='/profile'>
+                                {userInfo.name.split(' ')[0]}{' '}
                             </Link>
                         )}
+                    </li>
+                </ul>
+                <span className='menuDropDownButton'>
+                    <FontAwesomeIcon onClick={menuDropDownHandler} icon={ico} />
+                </span>
+
+                <div className='dropDownFloatingContainer'>
+                    <span>
+                        <Link className='headerLink' to='/'>
+                            <FontAwesomeIcon icon={faHome} />
+                        </Link>
                     </span>
                     <span>
-                        {ico === faTimes && !userInfo && (
-                            <Link
-                                className='headerLink'
-                                to='/login'
-                                onClick={menuDropDownHandler}
-                            >
+                        <Link className='headerLink' to='/cart'>
+                            <FontAwesomeIcon icon={faShoppingCart} />
+                        </Link>
+                    </span>
+
+                    <span>
+                        {!userInfo && (
+                            <Link className='headerLink' to='/login'>
                                 <FontAwesomeIcon icon={faSignInAlt} />
                             </Link>
                         )}
                     </span>
-                    <span>
-                        {ico === faTimes && userInfo && userInfo.admin && (
-                            <AdminPanel response='click' setIcon={setIco} />
-                        )}
-                    </span>
-                    <span>
-                        {ico === faTimes && userInfo && (
-                            <DropDown
-                                response='click'
-                                userInfo={userInfo}
-                                setIcon={setIco}
-                            />
-                        )}
-                    </span>
+                    <span>{userInfo && userInfo.admin && <AdminPanel />}</span>
+                    <span>{userInfo && <DropDown />}</span>
                 </div>
             </div>
         </>

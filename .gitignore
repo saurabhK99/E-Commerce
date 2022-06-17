@@ -11,7 +11,6 @@ node_modules/
 /frontend/build
 
 # misc
-/uploads/
 .DS_Store
 .env
 .env.local

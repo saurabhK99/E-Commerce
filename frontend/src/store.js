@@ -4,6 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 
 import {
     filterReducer,
+    latestProductsListReducer,
     productAddReducer,
     productDetailsReducer,
     productListReducer,
@@ -60,7 +61,8 @@ const reducer = combineReducers({
     productReviewStatus: productReviewReducer,
     orderDeliverStatus: orderDeliverReducer,
     filter: filterReducer,
-    orderRemoveStatus: orderRemoveReducer
+    orderRemoveStatus: orderRemoveReducer,
+    latestProductsList: latestProductsListReducer
 })
 
 const initialState = {

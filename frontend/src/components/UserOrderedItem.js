@@ -19,7 +19,6 @@ const UserOrderedItem = ({ orders }) => {
 
     return (
         <div className='orderedItemContainer'>
-            <strong style={{ fontSize: '2em' }}>ORDERS</strong>
             <div className='shadow'>
                 <table className='ordersTable'>
                     <thead>

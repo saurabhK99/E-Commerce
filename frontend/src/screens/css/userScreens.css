@@ -39,7 +39,7 @@
 
 .userActionButton {
     font-size: 1.3rem;
-    background-color: var(--grey);
+    background-color: var(--primary);
     color: whitesmoke;
     border: none;
     border-radius: 5px;
@@ -49,7 +49,7 @@
 
 .userActionButton:hover {
     background-color: orange;
-    color: var(--grey);
+    color: var(--primary);
     border-radius: 5px;
 }
 
@@ -64,7 +64,7 @@
 
 .defaultTable th {
     font-size: 1.5rem;
-    background-color: var(--grey);
+    background-color: var(--primary);
     color: whitesmoke;
     text-transform: uppercase;
 }

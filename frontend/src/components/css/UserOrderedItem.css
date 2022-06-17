@@ -27,7 +27,7 @@ td {
 
 .moreInfoIcon {
     font-size: 1.5rem;
-    color: var(--grey);
+    color: var(--primary);
     transition: 0.2s;
 }
 

@@ -1,0 +1,44 @@
+.latestProductContainer {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem;
+    font-size: 0.9rem;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255, 0.1);
+    color: white;
+    box-shadow: 0 4px 8px 0 rgb(0, 0, 0, 0.3);
+    transition: all 0.3s;
+
+}
+
+.latestProductContainer:hover {
+    box-shadow: 0 8px 16px 0 rgb(0, 0, 0, 0.3);
+    background-color: transparent;
+}
+
+.latestProductContainer img {
+    width: 10rem;
+}
+
+.latestProductDescSection {
+    display: flex;
+    margin: 1rem;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 1060px) {}
+
+@media only screen and (max-width: 530px) {
+    .latestProductContainer {
+        flex-direction: column;
+        width: 10rem;
+        margin: 1rem 0.1rem;
+        font-size: 0.6rem;
+    }
+
+    .latestProductContainer img {
+        width: 10rem;
+    }
+}

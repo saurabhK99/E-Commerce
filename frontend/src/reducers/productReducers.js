@@ -18,6 +18,9 @@ import {
     PRODUCT_REVIEW_REQUEST,
     PRODUCT_REVIEW_SUCCESS,
     PRODUCT_APPLY_FILTER,
+    LATEST_PRODUCT_LIST_REQUEST,
+    LATEST_PRODUCT_LIST_SUCCESS,
+    LATEST_PRODUCT_LIST_FAIL,
 } from '../constants/productConstants'
 
 export const productListReducer = (state = { products: [] }, action) => {
@@ -34,6 +37,23 @@ export const productListReducer = (state = { products: [] }, action) => {
             }
 
         case PRODUCT_LIST_FAIL:
+            return { loading: false, error: action.payload }
+
+        default:
+            return state
+    }
+}
+
+export const latestProductsListReducer = (
+    state = { latestProducts: [] },
+    action
+) => {
+    switch (action.type) {
+        case LATEST_PRODUCT_LIST_REQUEST:
+            return { loading: true, ...state }
+        case LATEST_PRODUCT_LIST_SUCCESS:
+            return { loading: false, latestProducts: action.payload }
+        case LATEST_PRODUCT_LIST_FAIL:
             return { loading: false, error: action.payload }
 
         default:

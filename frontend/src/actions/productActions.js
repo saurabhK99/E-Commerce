@@ -1,6 +1,9 @@
 import axios from 'axios'
 
 import {
+    LATEST_PRODUCT_LIST_FAIL,
+    LATEST_PRODUCT_LIST_REQUEST,
+    LATEST_PRODUCT_LIST_SUCCESS,
     PRODUCT_ADD_FAIL,
     PRODUCT_ADD_REQUEST,
     PRODUCT_ADD_SUCCESS,
@@ -20,6 +23,16 @@ import {
     PRODUCT_REVIEW_REQUEST,
     PRODUCT_REVIEW_SUCCESS,
 } from '../constants/productConstants'
+
+export const listLatestProducts = () => async (dispatch) => {
+    try {
+        dispatch({ type: LATEST_PRODUCT_LIST_REQUEST })
+        const { data } = await axios.get('/api/products/latest')
+        dispatch({ type: LATEST_PRODUCT_LIST_SUCCESS, payload: data })
+    } catch (err) {
+        dispatch({ type: LATEST_PRODUCT_LIST_FAIL, paylaod: err.message })
+    }
+}
 
 export const listProducts =
     (page = '1', filter = '') =>

@@ -1,0 +1,25 @@
+.categoriesContainer {
+    display: flex;
+    cursor: pointer ;
+    flex-wrap: wrap;
+    list-style-type: none;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+}
+
+.categoriesContainer li {
+    display: flex;
+    flex-direction: column;
+    margin: 1em 3em 0 3em;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.categoriesContainer img {
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+}

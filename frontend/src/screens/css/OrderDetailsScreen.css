@@ -23,7 +23,7 @@
 .backwardLink {
     text-decoration: none;
     padding: 0.5rem;
-    background-color: var(--grey);
+    background-color: var(--primary);
     font-size: 12px;
     border-radius: 5px;
     color: whitesmoke;
@@ -32,7 +32,7 @@
 
 .backwardLink:hover {
     background-color: orange;
-    color: var(--grey);
+    color: var(--primary);
 }
 
 

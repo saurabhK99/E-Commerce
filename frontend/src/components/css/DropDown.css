@@ -1,64 +1,27 @@
-.dropDownHandler {
-    position: relative;
-    cursor: pointer;
-}
-
-.dropDownContainer {
-    display: none;
-    position: absolute;
-    z-index: 100;
-    left: 0;
-    right: 0;
-    font-size: 1rem;
-    flex-direction: column;
-    border-radius: 5px;
-    background-color: rgb(241, 241, 241);
-}
-
 .dropDownClickContainer {
     display: flex;
+    position: fixed;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    z-index: 100;
+    width: 100vw;
     left: 0;
-    right: 0;
+    bottom: 4rem;
     font-size: 1rem;
     flex-direction: column;
-    border-radius: 5px;
-    background-color: rgb(241, 241, 241);
-}
-
-.admin {
-    width: 8rem;
-    left: -2.5rem;
-}
-
-.dropDownDisabled {
-    display: none;
+    background-color: var(--primary);
 }
 
 .dropDownLink {
+    border: 1px solid whitesmoke;
     text-decoration: none;
     text-align: center;
-    color: var(--grey);
+    color: whitesmoke;
+    width: 100%;
     padding: 1em;
     transition: 0.2s;
 }
 
 .dropDownLink:hover {
-    color: orange;
-}
-
-.dropDownIcon {
-    font-size: 1.5rem;
-    transition: 0.2s;
-}
-
-.dropDownLink:hover .dropDownIcon {
-    color: orange;
-}
-
-.dropDownHandler:hover .dropDownContainer {
-    display: flex;
+    color: black;
+    background-color: orange;
 }

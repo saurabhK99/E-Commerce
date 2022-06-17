@@ -1,3 +1,5 @@
+import { faMoneyBillAlt } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -46,19 +48,35 @@ const CartScreen = ({ match, history, location }) => {
                     </section>
 
                     <section className='checkoutSection'>
-                        <span>
-                            Total items:{' '}
-                            {cartItems.reduce((acc, item) => acc + item.qty, 0)}
-                        </span>
-                        <span>
-                            Total Price: &#8377;
-                            {cartItems.reduce(
+                        <span className='checkoutSectionSpan'>
+                            <strong>Price</strong>
+                            
+                            <span>&#8377;{cartItems.reduce(
                                 (acc, item) => acc + item.qty * item.price,
                                 0
-                            )}
+                            )}</span>
+                        </span>
+                        <span className='checkoutSectionSpan'>
+                            <strong>Shipping</strong>
+                            
+                            <span>&#8377;40</span>
+                        </span>
+                        <span className='checkoutSectionSpan'>
+                            <strong>Discount </strong>
+                            
+                            <span>-&#8377;40
+                            </span>
+                        </span>
+                        <span className='checkoutSectionSpan'>
+                            <strong>Total Price </strong>
+                            
+                            <span>&#8377;{cartItems.reduce(
+                                (acc, item) => acc + item.qty * item.price,
+                                0
+                            )}</span>
                         </span>
                         <button className='checkout' onClick={checkoutHandler}>
-                            Check-Out
+                            <FontAwesomeIcon icon={faMoneyBillAlt} /> &nbsp;Check-Out
                         </button>
                     </section>
                 </div>

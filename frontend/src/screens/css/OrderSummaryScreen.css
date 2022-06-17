@@ -18,6 +18,7 @@
 
 .totalPriceContainer {
     display: flex;
+    background-color: rgb(21, 131, 195, 0.1);
     justify-content: space-between;
     border-radius: 5px;
     font-size: 1.3em;
@@ -29,7 +30,7 @@
 .orderPayButton {
     display: inline-block;
     color: whitesmoke;
-    background-color: var(--grey);
+    background-color: var(--primary);
     border: none;
     width: 15%;
     border-bottom-right-radius: 5px;
@@ -45,7 +46,7 @@
 }
 .orderActionButton:hover,
 .orderPayButton:hover {
-    color: var(--grey);
+    color: var(--primary);
     background-color: orange;
 }
 

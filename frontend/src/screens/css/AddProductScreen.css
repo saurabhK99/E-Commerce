@@ -13,7 +13,7 @@
 .addProductTable thead {
     color: whitesmoke;
     font-size: 1.5rem;
-    background-color: var(--grey);
+    background-color: var(--primary);
 }
 
 .addProductTable select {
@@ -40,7 +40,7 @@ textarea {
 .addProductTable .addProductButton {
     width: fit-content;
     border: none;
-    background-color: var(--grey);
+    background-color: var(--primary);
     color: whitesmoke;
     font-size: 1.2rem;
     transition: 0.2s;
@@ -48,7 +48,7 @@ textarea {
 
 .addProductButton:hover {
     background-color: orange;
-    color: var(--grey);
+    color: var(--primary);
 }
 
 .addProductTable .imageInput {

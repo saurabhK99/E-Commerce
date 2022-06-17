@@ -1,9 +1,14 @@
 .reviewBoxContainer {
     display: flex;
     flex-direction: column;
-    margin: 1em;
     border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin: 0.2rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 -1px 2px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s;
+}
+
+.reviewBoxContainer:hover {
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1), 0 -4px 4px rgba(0, 0, 0, 0.1);
 }
 
 .reviewerName {
@@ -19,5 +24,8 @@
 @media only screen and (max-height: 1060px) {
     .reviewerName {
         font-size: 1.1rem;
+    }
+    .reviewerComment {
+        font-size: 0.9rem;
     }
 }

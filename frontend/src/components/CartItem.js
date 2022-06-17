@@ -43,12 +43,12 @@ const CartItem = ({ item, disable }) => {
                                 </option>
                             ))}
                         </select>
-                        <button
+
+                        <FontAwesomeIcon
                             className={`removeItemButton ${disable}`}
                             onClick={removeHandler}
-                        >
-                            <FontAwesomeIcon icon={faTrashAlt} />
-                        </button>
+                            icon={faTrashAlt}
+                        />
                     </span>
                 </span>
             </div>

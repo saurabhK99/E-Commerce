@@ -10,6 +10,8 @@ import Review from '../components/Review'
 import Rating from '../components/Rating'
 
 import './css/ProductScreen.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
 const ProductScreen = ({ history, match }) => {
     const [qty, setQty] = useState(1)
@@ -60,29 +62,8 @@ const ProductScreen = ({ history, match }) => {
             ) : (
                 <div>
                     <section className='productScreenContainer'>
-                        <section className='productSpecContainer'>
-                            <section className='imgContainer'>
-                                <img src={product.image} alt='' />
-                            </section>
-
-                            <section className='descContainer'>
-                                <strong>{product.name}</strong>
-                                <span>
-                                    <Rating rating={product.rating} />
-                                </span>
-                                <strong>{product.brand}</strong>
-                                <p>{product.description}</p>
-                            </section>
-                        </section>
-
-                        <section className='priceContainer'>
-                            <span>Price: &#8377; {product.price}</span>
-                            <span>
-                                {product.countInStock
-                                    ? `In-Stock: ${product.countInStock}`
-                                    : 'Out of Stock'}
-                            </span>
-
+                        <section className='imgContainer'>
+                            <img src={product.image} alt='' />
                             <select
                                 className='selectContainer'
                                 name='qty'
@@ -104,62 +85,80 @@ const ProductScreen = ({ history, match }) => {
                                 onClick={addToCartHandler}
                                 disabled={!product.countInStock}
                             >
-                                Add to Cart
+                                <FontAwesomeIcon icon={faShoppingCart}/> &nbsp;Add to Cart
                             </button>
                         </section>
-                    </section>
-                    <section className='reviewsContainer'>
-                        <span className='reviewHeading'>Reviews</span>
-                        {userInfo && (
-                            <input
-                                type='button'
-                                className='reviewButton'
-                                onClick={showReviewHandler}
-                                value='Add Review'
-                            />
-                        )}
-                        <form
-                            className='reviewForm disableCurrent'
-                            onSubmit={addReviewHandler}
-                        >
-                            <textarea
-                                name='commentBox'
-                                id='comment'
-                                cols='50'
-                                rows='3'
-                                value={comment}
-                                onChange={(e) => setComment(e.target.value)}
-                            ></textarea>
-                            <section className='ratingSubmitSection'>
-                                <select
-                                    name='ratingBox'
-                                    className='selectContainer'
-                                    onChange={(e) => setRating(e.target.value)}
-                                >
-                                    <option value='1'>1</option>
-                                    <option value='2'>2</option>
-                                    <option value='3'>3</option>
-                                    <option value='4'>4</option>
-                                    <option value='5'>5</option>
-                                </select>
-                                <input
-                                    type='submit'
-                                    className='reviewButton'
-                                    value='Submit'
-                                />
-                            </section>
-                        </form>
 
-                        {product.reviews &&
-                            (product.reviews.length > 0 ? (
-                                <div className='reviewContainer'>
-                                    {product.reviews.map((review) => (
-                                        <Review review={review} />
+                        <section className='descContainer'>
+                            <strong>{product.name}</strong>
+                            <span>
+                                <Rating rating={product.rating} />
+                            </span>
+                            <strong>{product.brand}</strong>
+                            <strong>&#8377;{product.price}</strong>
+                            <p>{product.description}</p>
+                            <section className='reviewsContainer'>
+                                {userInfo && (
+                                    <input
+                                        type='button'
+                                        className='reviewButton'
+                                        onClick={showReviewHandler}
+                                        value='Add Review'
+                                    />
+                                )}
+                                <form
+                                    className='reviewForm disableCurrent'
+                                    onSubmit={addReviewHandler}
+                                >
+                                    <textarea
+                                        name='commentBox'
+                                        id='comment'
+                                        cols='50'
+                                        rows='3'
+                                        value={comment}
+                                        onChange={(e) =>
+                                            setComment(e.target.value)
+                                        }
+                                    ></textarea>
+                                    <section className='ratingSubmitSection'>
+                                        <select
+                                            name='ratingBox'
+                                            className='selectContainer'
+                                            onChange={(e) =>
+                                                setRating(e.target.value)
+                                            }
+                                        >
+                                            <option value='1'>1</option>
+                                            <option value='2'>2</option>
+                                            <option value='3'>3</option>
+                                            <option value='4'>4</option>
+                                            <option value='5'>5</option>
+                                        </select>
+                                        <input
+                                            type='submit'
+                                            className='reviewButton'
+                                            value='Submit'
+                                        />
+                                    </section>
+                                </form>
+
+                                {product.reviews &&
+                                    (product.reviews.length > 0 ? (
+                                        <div className='reviewContainer'>
+                                            {product.reviews.map((review) => (
+                                                <Review
+                                                    key={review._id}
+                                                    review={review}
+                                                />
+                                            ))}
+                                        </div>
+                                    ) : (
+                                        <h1 className='noReviewH1'>
+                                            No Reviews
+                                        </h1>
                                     ))}
-                                </div>
-                            ) : (
-                                <h1 className='noReviewH1'>No Reviews</h1>
-                            ))}
+                            </section>
+                        </section>
                     </section>
                 </div>
             )}

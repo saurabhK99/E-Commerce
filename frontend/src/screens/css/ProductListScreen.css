@@ -3,7 +3,7 @@
     margin: 1em auto;
     padding: 1em;
     font-size: 1.2rem;
-    background-color: var(--grey);
+    background-color: var(--primary);
     color: whitesmoke;
     border: none;
     border-radius: 5px;
@@ -11,6 +11,6 @@
 }
 
 .addProductButton:hover {
-    color: var(--grey);
+    color: var(--primary);
     background-color: orange;
 }

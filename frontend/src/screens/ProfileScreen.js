@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from 'react'
-
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
-import { userShowProfile, userUpdateProfile } from '../actions/userActions'
+import {
+    userShowProfile,
+    userUpdateProfile,
+    userLogout,
+} from '../actions/userActions'
 
 import { getAllOrder } from '../actions/orderActions'
 
 import Message from '../components/Message'
 import UserOrderedItem from '../components/UserOrderedItem'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+
 
 import './css/ProfileScreen.css'
 
@@ -15,6 +23,7 @@ const ProfileScreen = () => {
     const [uname, setUname] = useState()
     const [email, setEmail] = useState()
 
+    const history = useHistory()
     const dispatch = useDispatch()
 
     const userProfile = useSelector((s) => s.userProfile)
@@ -47,17 +56,20 @@ const ProfileScreen = () => {
 
         let npass = document.getElementById('npass').value
         let cpass = document.getElementById('cpass').value
-        
-        
+
         if (npass && cpass) {
             if (npass === cpass) {
                 updateInfo = { ...updateInfo, password: npass }
                 dispatch(userUpdateProfile(updateInfo))
-
             } else {
-                alert("Password did not matched!")
+                alert('Password did not matched!')
             }
         }
+    }
+
+    const logoutHandler = () => {
+        dispatch(userLogout())
+        history.push("/")
     }
 
     return (
@@ -65,10 +77,15 @@ const ProfileScreen = () => {
             <UserOrderedItem orders={orders} />
 
             <button
-                className='toggleUpdateButton'
+                className='orderScreenButton'
+                style={{left:"0"}}
                 onClick={updateContainerHandler}
             >
                 Update Info
+            </button>
+
+            <button className='orderScreenButton' onClick={logoutHandler}>
+                <FontAwesomeIcon icon={faSignOutAlt} />
             </button>
 
             <div className='userContainer userProfileContainer updateDisabled'>

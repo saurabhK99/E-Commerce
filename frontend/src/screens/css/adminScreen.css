@@ -1,0 +1,64 @@
+.adminContainer {
+    display: flex;
+    background-color: var(--primary);
+    margin: 4em auto 0 auto;
+    border-radius: 20px;
+    width: max-content;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.adminGreeting {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    margin: 2rem;
+    align-items: center;
+}
+
+.adminGreeting h1 {
+    margin: 1rem;
+}
+
+.adminControlContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.adminControlLink {
+    border: 5px solid white;
+    text-align: center;
+    border-radius: 20px;
+    margin: 2rem;
+    width: m;
+    padding: 1rem;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s;
+}
+
+.adminControlLink:hover {
+    background-color: white;
+    color: var(--primary);
+}
+
+@media only screen and (max-width: 530px) {
+    .adminContainer {
+        flex-direction: column;
+        margin: 1rem auto;
+        width: 90%;
+    }
+
+    .adminGreeting img {
+        width: 5rem;
+    }
+
+    .adminGreeting h1 {
+        font-size: 1rem;
+    }
+
+    .adminControlLink {
+        margin: 1rem;
+        font-size: 0.8rem;
+    }
+}

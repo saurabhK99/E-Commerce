@@ -13,23 +13,23 @@
     width: 15vw;
 }
 
-.toggleUpdateButton {
+.orderScreenButton {
     position: absolute;
-    right: 2em;
-    top: 8em;
+    top: 4.4em;
+    right: 0;
     font-size: 1rem;
-    background-color: var(--grey);
+    background-color: var(--primary);
     color: whitesmoke;
     border: none;
-    border-radius: 5px;
+    border-radius: 0 0 5px 5px;
     height: 3rem;
     transition: 0.3s;
     padding: 1em;
 }
 
-.toggleUpdateButton:hover {
+.orderScreenButton:hover {
     background-color: orange;
-    color: var(--grey);
+    color: var(--primary);
 }
 
 @media only screen and (max-width: 1060px) {

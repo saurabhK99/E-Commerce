@@ -1,6 +1,7 @@
 .shippingContainer {
     display: flex;
     flex-direction: column;
+    background-color: rgb(21, 131, 195, 0.1);
     margin-bottom: 5em;
     border-radius: 5px;
     padding: 1em;
@@ -26,7 +27,7 @@
     right: 0;
     border-top-right-radius: 5px;
     color: whitesmoke;
-    background-color: var(--grey);
+    background-color: var(--primary);
     padding: 1em;
     border: none;
     transition: 0.3s;
@@ -34,7 +35,7 @@
 
 .shippingUpdateButton:hover {
     background-color: orange;
-    color: var(--grey);
+    color: var(--primary);
 }
 
 @media only screen and (max-width: 1400px) {
