@@ -29,3 +29,12 @@
         font-size: 0.9rem;
     }
 }
+
+@media only screen and (max-height: 530) {
+    .reviewerName {
+        font-size: 0.8rem;
+    }
+    .reviewerComment {
+        font-size: 0.7rem;
+    }
+}

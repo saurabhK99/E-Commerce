@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom'
 
 import { useDispatch, useSelector } from 'react-redux'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserCog } from '@fortawesome/free-solid-svg-icons'
-
 import { userRegistration } from '../actions/userActions'
 
 import Message from '../components/Message'
@@ -40,51 +37,60 @@ const RegisterScreen = () => {
 
     return (
         <div className='userContainer'>
-            <span className='userPageHeading'>
-                <FontAwesomeIcon icon={faUserCog} />
-            </span>
-            {status && status.success && (
-                <Message type='success'>{status.success}</Message>
-            )}
-            {error && error.error && (
-                <Message type='error'>{error.error}</Message>
-            )}
-            <form className='userForm' onSubmit={submitHandler}>
-                <input
-                    type='text'
-                    className='userInput'
-                    value={uname}
-                    onChange={(e) => setUname(e.target.value)}
-                    placeholder='Full Name'
-                    required
-                />
+            <section className='userPageInfoContainer'>
+                <img src='images/userLogin.png' alt='user-login' />
+                <h2>Welcome! we hope you'd like us</h2>
+            </section>
+            <section className='userInputDetailsContainer'>
+                {status && status.success && (
+                    <Message type='success'>{status.success}</Message>
+                )}
+                {error && error.error && (
+                    <Message type='error'>{error.error}</Message>
+                )}
+                <form className='userForm' onSubmit={submitHandler}>
+                    <section className='inputWrap'>
+                        <input
+                            type='text'
+                            className='userInput'
+                            value={uname}
+                            onChange={(e) => setUname(e.target.value)}
+                            required
+                        />
+                        <label>Full Name</label>
+                    </section>
+                    <section className='inputWrap'>
+                        <input
+                            type='email'
+                            className='userInput'
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                        <label>email</label>
+                    </section>
 
-                <input
-                    type='email'
-                    className='userInput'
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder='E-Mail Address'
-                    required
-                />
+                    <section className='inputWrap'>
+                        <input
+                            type='password'
+                            className='userInput'
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                        <label>Password</label>
+                    </section>
 
-                <input
-                    type='password'
-                    className='userInput'
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder='Password'
-                    required
-                />
-                <input
-                    type='submit'
-                    className='userActionButton'
-                    value='SignUp'
-                />
-            </form>
-            <Link className='switchLink' to='/login'>
-                Existing User? SignIn
-            </Link>
+                    <input
+                        type='submit'
+                        className='userActionButton'
+                        value='SignUp'
+                    />
+                </form>
+                <Link className='switchLink' to='/login'>
+                    Existing User? SignIn
+                </Link>
+            </section>
         </div>
     )
 }

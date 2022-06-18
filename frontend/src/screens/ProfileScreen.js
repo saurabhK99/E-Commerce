@@ -16,7 +16,6 @@ import UserOrderedItem from '../components/UserOrderedItem'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 
-
 import './css/ProfileScreen.css'
 
 const ProfileScreen = () => {
@@ -69,71 +68,92 @@ const ProfileScreen = () => {
 
     const logoutHandler = () => {
         dispatch(userLogout())
-        history.push("/")
+        history.push('/')
     }
 
     return (
         <>
-            <UserOrderedItem orders={orders} />
-
             <button
-                className='orderScreenButton'
-                style={{left:"0"}}
+                className='userActionButton'
+                style={{marginRight:'1em', padding:'0.5em', borderRadius:'0'}}
                 onClick={updateContainerHandler}
             >
                 Update Info
             </button>
 
-            <button className='orderScreenButton' onClick={logoutHandler}>
+            <button className='userActionButton' style={{borderRadius:'0', padding:'0.5em'}} onClick={logoutHandler}>
                 <FontAwesomeIcon icon={faSignOutAlt} />
             </button>
 
-            <div className='userContainer userProfileContainer updateDisabled'>
-                {profileStatus.status && (
-                    <Message className='floatingMessage' type='success'>
-                        {profileStatus.status.success}
-                    </Message>
-                )}
-                {profileStatus.error && (
-                    <Message className='floatingMessage' type='error'>
-                        {profileStatus.error.error}
-                    </Message>
-                )}
+            <UserOrderedItem orders={orders} />
 
-                <form
-                    className='userForm userProfileForm'
-                    onSubmit={updateFormHandler}
-                >
-                    <input
-                        type='text'
-                        className='userInput'
-                        value={uname}
-                        onChange={(e) => setUname(e.target.value)}
-                        placeholder='Full Name'
-                    />
-                    <input
-                        type='email'
-                        className='userInput'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder='E-Mail Address'
-                    />
-                    <input
-                        type='password'
-                        className='userInput'
-                        id='npass'
-                        placeholder='New Password'
-                    />
-                    <input
-                        type='password'
-                        className='userInput'
-                        id='cpass'
-                        placeholder='Confirm Password'
-                    />
-                    <button className='userActionButton' type='submit'>
-                        Update
-                    </button>
-                </form>
+            <div className='userContainer userProfileContainer updateDisabled'>
+                <section className='userPageInfoContainer'>
+                    <img src='images/admin.png' alt='user-login' />
+                    <h2>Change the personal details here</h2>
+                </section>
+                <section className='userInputDetailsContainer'>
+                    {profileStatus.status && (
+                        <Message className='floatingMessage' type='success'>
+                            {profileStatus.status.success}
+                        </Message>
+                    )}
+                    {profileStatus.error && (
+                        <Message className='floatingMessage' type='error'>
+                            {profileStatus.error.error}
+                        </Message>
+                    )}
+
+                    <form
+                        className='userForm userProfileForm'
+                        onSubmit={updateFormHandler}
+                    >
+                        <section className='inputWrap'>
+                            <input
+                                type='text'
+                                className='userInput'
+                                value={uname}
+                                onChange={(e) => setUname(e.target.value)}
+                                required
+                            />
+                            <label>Full Name</label>
+                        </section>
+
+                        <section className='inputWrap'>
+                            <input
+                                type='email'
+                                className='userInput'
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                            />
+                            <label>Email</label>
+                        </section>
+
+                        <section className='inputWrap'>
+                            <input
+                                type='password'
+                                className='userInput'
+                                id='npass'
+                                required
+                            />
+                            <label>Password</label>
+                        </section>
+
+                        <section className='inputWrap'>
+                            <input
+                                type='password'
+                                className='userInput'
+                                id='cpass'
+                                required
+                            />
+                            <label>Confirm Passowrd</label>
+                        </section>
+                        <button className='userActionButton' type='submit'>
+                            Update
+                        </button>
+                    </form>
+                </section>
             </div>
         </>
     )

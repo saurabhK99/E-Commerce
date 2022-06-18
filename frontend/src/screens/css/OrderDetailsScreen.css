@@ -1,48 +1,37 @@
 .shippingDetails {
     display: flex;
-    font-size: 1.2rem;
+    position: sticky;
+    top: 6rem;
+    padding: 1em;
+    margin: 1rem;
+    font-size: 0.9rem;
     flex-direction: column;
-    box-shadow: 0 4px 4px rgb(0, 0, 0, 0.3);
-    border-radius: 5px;
+    box-shadow: 0 4px 4px rgb(0, 0, 0, 0.2);
+    height: fit-content;
 }
 
 .deliveryStatus {
     display: block;
     text-align: center;
     margin-top: 2em;
-    box-shadow: 0 4px 4px rgb(0, 0, 0, 0.3);
-    border-radius: 5px;
-    font-size: 1.3em;
-    padding: 0.5em;
+    box-shadow: 0 4px 4px rgb(0, 0, 0, 0.2);
+    font-size: 1em;
+    padding: 1em;
 }
 .orderItems {
     margin: 1rem;
 }
 
 
-.backwardLink {
-    text-decoration: none;
-    padding: 0.5rem;
-    background-color: var(--primary);
-    font-size: 12px;
-    border-radius: 5px;
-    color: whitesmoke;
-    transition: 0.2s;
-}
-
-.backwardLink:hover {
-    background-color: orange;
-    color: var(--primary);
-}
-
-
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 830) {
     .shippingDetails, .deliveryStatus {
-        margin: 0.5rem;
-        font-size: 16px;
+        font-size: 0.7rem;
     }
+}
 
-    .orderPrice {
-        width: 100%;
+
+@media only screen and (max-width: 530) {
+    .shippingDetails, .deliveryStatus {
+        font-size: 0.6rem;
     }
 }

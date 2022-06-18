@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { getOrder } from '../actions/orderActions'
@@ -8,12 +7,9 @@ import Message from '../components/Message'
 import Loading from '../components/Loading'
 import OrderItem from '../components/OrderItem'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
-
 import './css/OrderDetailsScreen.css'
 
-const OrderDetailsScreen = ({ match, history }) => {
+const OrderDetailsScreen = ({ match }) => {
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -32,33 +28,7 @@ const OrderDetailsScreen = ({ match, history }) => {
             ) : (
                 orderDetails.orderItems && (
                     <div className='orderContainer'>
-                        <section>
-                            <Link className='backwardLink' to={'/profile'}>
-                                <FontAwesomeIcon icon={faLongArrowAltLeft} /> GO
-                                BACK
-                            </Link>
-                            <span className='orderItems'>
-                                <strong style={{ fontSize: '1.5em' }}>
-                                    ITEMS
-                                </strong>
-                                {orderDetails.orderItems.map((item) => (
-                                    <OrderItem
-                                        item={item}
-                                        key={orderDetails._id}
-                                    />
-                                ))}
-                            </span>
-                        </section>
-                        <section className='orderPrice'>
-                            <div className='shippingDetails'>
-                                <strong>Shipped To</strong>
-                                <strong>
-                                    {`${orderDetails.shippingAddress.address},
-                         ${orderDetails.shippingAddress.city},
-                          ${orderDetails.shippingAddress.state} -
-                          ${orderDetails.shippingAddress.postalCode}  `}
-                                </strong>
-                            </div>
+                        <section className='orderItems'>
                             {orderDetails.isDelivered ? (
                                 <span className='deliveryStatus success'>
                                     Delivered
@@ -68,6 +38,38 @@ const OrderDetailsScreen = ({ match, history }) => {
                                     Delivery Pending
                                 </span>
                             )}
+                            <strong
+                                style={{
+                                    textTransform: 'uppercase',
+                                    color: 'gray',
+                                    boxShadow: '0 1px 0 rgb(0,0,0,0.2)',
+                                    margin: '1em',
+                                }}
+                            >
+                                Items
+                            </strong>
+                            {orderDetails.orderItems.map((item) => (
+                                <OrderItem item={item} key={orderDetails._id} />
+                            ))}
+                        </section>
+
+                        <section className='shippingDetails'>
+                            <strong
+                                style={{
+                                    textTransform: 'uppercase',
+                                    color: 'gray',
+                                    boxShadow: '0 1px 0 rgb(0,0,0,0.2)',
+                                    margin: '1em',
+                                }}
+                            >
+                                Shipped To
+                            </strong>
+                            <strong>
+                                {`${orderDetails.shippingAddress.address},
+                         ${orderDetails.shippingAddress.city},
+                          ${orderDetails.shippingAddress.state} -
+                          ${orderDetails.shippingAddress.postalCode}  `}
+                            </strong>
                         </section>
                     </div>
                 )

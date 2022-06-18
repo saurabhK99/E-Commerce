@@ -3,68 +3,9 @@
 }
 
 .userProfileContainer {
-    position: absolute;
-    right: 2em;
-    top: 6rem;
-    width: 15vw;
-}
-
-.userProfileForm {
-    width: 15vw;
-}
-
-.orderScreenButton {
-    position: absolute;
-    top: 4.4em;
+    position: fixed;
+    background-color: white;
     right: 0;
-    font-size: 1rem;
-    background-color: var(--primary);
-    color: whitesmoke;
-    border: none;
-    border-radius: 0 0 5px 5px;
-    height: 3rem;
-    transition: 0.3s;
-    padding: 1em;
-}
-
-.orderScreenButton:hover {
-    background-color: orange;
-    color: var(--primary);
-}
-
-@media only screen and (max-width: 1060px) {
-    .userProfileContainer {
-        position:fixed;
-        top: 4.5rem;
-        width: 60vw;
-        background-color: orange;
-    }
-
-    .toggleUpdateButton {
-        top: 5rem;
-    }
-
-    .userProfileForm {
-        width: 100%;
-        font-size: 16px;
-    }
-}
-
-@media only screen and (max-width: 530px) {
-    .userProfileContainer {
-        position:fixed;
-        font-size: 12px;
-        top: 4.5rem;
-        width: 60vw;
-        background-color: orange;
-    }
-
-    .toggleUpdateButton {
-        top: 8rem;
-    }
-
-    .userProfileForm input {
-        font-size: 12px;
-    }
+    bottom: 4rem;
 }
 

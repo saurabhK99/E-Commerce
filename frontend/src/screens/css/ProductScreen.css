@@ -139,3 +139,13 @@
         flex-direction: column;
     }
 }
+
+@media only screen and (max-width: 1060px) {
+    .descContainer {
+        font-size: 0.8rem;
+    }
+
+    .addToCartButton {
+        font-size: 0.7rem;
+    }
+}

@@ -5,9 +5,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import OrderItem from '../components/OrderItem'
 import Shipping from '../components/Shipping'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { createOrder, payOrder } from '../actions/orderActions'
 
 import './css/OrderSummaryScreen.css'
+import { faMoneyBillAlt } from '@fortawesome/free-solid-svg-icons'
 
 const OrderSummaryScreen = ({ history }) => {
     const dispatch = useDispatch()
@@ -57,7 +60,7 @@ const OrderSummaryScreen = ({ history }) => {
             orderItems: cartItems,
             user: userInfo._id,
             shippingAddress: userInfo.shippingAddress,
-            amount: totalPrice*100,
+            amount: totalPrice * 100,
             currency: 'INR',
             receipt: `receipt_${Date.now()}`,
             notes: {
@@ -75,7 +78,7 @@ const OrderSummaryScreen = ({ history }) => {
 
         var razorpayObject = new window.Razorpay({
             key: 'rzp_test_JaAmveBrrhzK1D',
-            amount: totalPrice*100,
+            amount: totalPrice * 100,
             currency: 'INR',
             name: 'E-Commerce',
             description: 'E-Commerce Website',
@@ -114,51 +117,45 @@ const OrderSummaryScreen = ({ history }) => {
     return (
         <div className='orderContainer'>
             <section className='orderItems'>
-                <strong style={{ fontSize: '2em' }}>ITEMS</strong>
+                <h4 style={{ color:'gray', boxShadow: '0 1px 0 rgb(0,0,0,0.2)', margin: '1em'}}>ITEMS</h4>
                 {cartItems.map((i) => (
                     <OrderItem key={i.product} item={i} />
                 ))}
+                <Shipping />
             </section>
 
-            <section className='orderPrice'>
-                <Shipping />
+            <section className='totalPriceContainer'>
+                <h4
+                    style={{
+                        color: 'gray',
+                        boxShadow: '0 1px 0px rgb(0,0,0,0.2)',
+                        marginBottom: '1em',
+                        textTransform: 'uppercase',
+                    }}
+                >
+                    Price Details
+                </h4>
+                <span className='totalPriceContainerSpan'>
+                    <strong>Items Price</strong>
+                    <span>&#8377;{itemsPrice}</span>
+                </span>
 
-                <div className='totalPriceContainer'>
-                    <table className='priceTable'>
-                        <tbody>
-                            <tr>
-                                <td>Items Price</td>
-                                <td>&#8377; {itemsPrice}</td>
-                            </tr>
+                <span className='totalPriceContainerSpan'>
+                    <strong>GST</strong>
+                    <span>&#8377;{taxPrice}</span>
+                </span>
 
-                            <tr>
-                                <td>Shipping Price</td>
-                                <td>&#8377; 0</td>
-                            </tr>
+                <span className='totalPriceContainerSpan'>
+                    <strong>Total</strong>
+                    <strong>&#8377;{totalPrice.toFixed(2)}</strong>
+                </span>
 
-                            <tr>
-                                <td>GST</td>
-                                <td>&#8377; {taxPrice}</td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <b>Total</b>
-                                </td>
-                                <td>
-                                    <b>&#8377; {totalPrice.toFixed(2)}</b>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <button
-                        onClick={placeOrderHandler}
-                        className='orderActionButton'
-                    >
-                        Place Order
-                    </button>
-                </div>
+                <button
+                    onClick={placeOrderHandler}
+                    className='orderActionButton'
+                >
+                    <FontAwesomeIcon icon={faMoneyBillAlt} /> &nbsp;Place Order
+                </button>
 
                 <button
                     style={{ alignSelf: 'center', width: '95%' }}

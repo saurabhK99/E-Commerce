@@ -38,37 +38,57 @@ const Shipping = () => {
 
     return (
         <div className='shippingContainer'>
-            <strong style={{ fontSize: '2em', marginBottom: '1em' }}>
-                Shipping Details
+            <strong
+                style={{
+                    textTransform: 'uppercase',
+                    color: 'gray',
+                    boxShadow: '0 1px 0 rgb(0,0,0,0.2)',
+                    margin: '1em',
+                }}
+            >
+                Shipping Address
             </strong>
 
             <form className='shippingForm'>
-                <input
-                    type='text'
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                    placeholder='Address'
-                />
+                <section className='inputWrap'>
+                    <input
+                        type='text'
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
+                        required
+                    />
+                    <label>Address</label>
+                </section>
 
-                <input
-                    type='text'
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                    placeholder='City'
-                />
+                <section className='inputWrap'>
+                    <input
+                        type='text'
+                        value={city}
+                        onChange={(e) => setCity(e.target.value)}
+                        required
+                    />
+                    <label>City</label>
+                </section>
+                <section className='inputWrap'>
+                    <input
+                        type='text'
+                        value={state}
+                        onChange={(e) => setState(e.target.value)}
+                        required
+                    />
+                    <label>State</label>
+                </section>
 
-                <input
-                    type='text'
-                    value={state}
-                    onChange={(e) => setState(e.target.value)}
-                    placeholder='State'
-                />
-                <input
-                    type='text'
-                    value={postalCode}
-                    onChange={(e) => setPostalCode(e.target.value)}
-                    placeholder='Postal Code'
-                />
+                <section className='inputWrap'>
+                    <input
+                        type='text'
+                        value={postalCode}
+                        onChange={(e) => setPostalCode(e.target.value)}
+                        required
+                    />
+                    <label>Pin Code</label>
+                </section>
+
                 <button
                     className='shippingUpdateButton'
                     onClick={submitUpdateHandler}
