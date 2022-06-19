@@ -2,7 +2,7 @@
     display: block;
     margin: 1em auto;
     padding: 1em;
-    font-size: 1.2rem;
+    font-size: 1rem;
     background-color: var(--primary);
     color: whitesmoke;
     border: none;
@@ -13,4 +13,10 @@
 .addProductButton:hover {
     color: var(--primary);
     background-color: orange;
+}
+
+@media only screen and (max-width: 530px) {
+    .addProductButton {
+        font-size: 0.8rem;
+    }
 }

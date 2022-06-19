@@ -22,6 +22,9 @@ import {
     PRODUCT_REVIEW_FAIL,
     PRODUCT_REVIEW_REQUEST,
     PRODUCT_REVIEW_SUCCESS,
+    PRODUCT_UPDATE_RATING_FAIL,
+    PRODUCT_UPDATE_RATING_REQUEST,
+    PRODUCT_UPDATE_RATING_SUCCESS,
 } from '../constants/productConstants'
 
 export const listLatestProducts = () => async (dispatch) => {
@@ -151,3 +154,32 @@ export const addReview =
             })
         }
     }
+
+export const updateRating = (productId, newRating, numReviews) => async (dispatch, getState) => {
+    const token =
+        getState().userLogin.userInfo && getState().userLogin.userInfo.token
+
+    dispatch({ type: PRODUCT_UPDATE_RATING_REQUEST })
+
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        },
+    }
+
+    const { data } = await axios.put(
+        '/api/products/rating',
+        { productId, newRating, numReviews },
+        config
+    )
+    dispatch({ type: PRODUCT_UPDATE_RATING_SUCCESS, payload: data })
+
+    try {
+    } catch (err) {
+        dispatch({
+            type: PRODUCT_UPDATE_RATING_FAIL,
+            payload: err.response ? err.response.data.error : err.message,
+        })
+    }
+}

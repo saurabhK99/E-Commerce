@@ -18,7 +18,7 @@
 
 .imgContainer img {
     border-radius: 5px;
-    box-shadow: 0 8px 16px 0 rgb(0, 0, 0, 0.3);
+    /* box-shadow: 0 8px 16px 0 rgb(0, 0, 0, 0.3); */
     width: 30rem;
 }
 
@@ -99,13 +99,20 @@
 
 .reviewForm {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
 .reviewForm textarea {
-    margin: 0.5rem;
-    border-radius: 5px;
+    margin: 1rem;
+    width: 100%;
+    border: 1px solid var(--primary);
+}
+
+.reviewForm textarea:focus {
+    outline: none;
+    border-color: blue;
 }
 
 .selectContainer {
@@ -140,7 +147,7 @@
     }
 }
 
-@media only screen and (max-width: 1060px) {
+@media only screen and (max-width: 530px) {
     .descContainer {
         font-size: 0.8rem;
     }

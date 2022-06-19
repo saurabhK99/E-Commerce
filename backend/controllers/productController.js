@@ -91,6 +91,21 @@ const addReview = async (req, res) => {
     }
 }
 
+export const updateRating = async (req, res) => {
+    try {
+        const product = await Product.findById(req.body.productId)
+
+        product.rating = req.body.newRating
+        product.numReviews = req.body.numReviews
+
+        await product.save()
+
+        res.json({ success: 'Rating Updated!' })
+    } catch (err) {
+        res.json({ error: err.message })
+    }
+}
+
 const getAllProductsForAdmin = async (req, res) => {
     try {
         const products = await Product.find()

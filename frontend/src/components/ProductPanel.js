@@ -27,7 +27,7 @@ const ProductPanel = ({ info }) => {
             <td style={{ flex: '0 0 15%' }}>{info.name}</td>
 
             <td>&#8377; {info.price}</td>
-            <td>Qty: {info.countInStock}</td>
+            <td>{info.countInStock}</td>
 
             <td>
                 <FontAwesomeIcon

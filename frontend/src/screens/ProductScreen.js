@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 
-import { listProductDetails, addReview } from '../actions/productActions'
+import { listProductDetails, addReview, updateRating } from '../actions/productActions'
 
 import Message from '../components/Message'
 import Loading from '../components/Loading'
@@ -48,6 +48,17 @@ const ProductScreen = ({ history, match }) => {
         dispatch(
             addReview(product._id, { comment, name: userInfo.name, rating })
         )
+
+        let totalRating = product.reviews
+            .reduce((acc, review) => acc + review.rating, 0)
+            .toFixed(0)
+
+        totalRating += rating
+
+        let newRating = (totalRating / (product.reviews.length + 1)).toFixed(0)
+
+        dispatch(updateRating(product._id, newRating, product.reviews.length))
+
         setTimeout(() => {
             dispatch(listProductDetails(match.params.id))
         }, 500)
@@ -85,14 +96,17 @@ const ProductScreen = ({ history, match }) => {
                                 onClick={addToCartHandler}
                                 disabled={!product.countInStock}
                             >
-                                <FontAwesomeIcon icon={faShoppingCart}/> &nbsp;Add to Cart
+                                <FontAwesomeIcon icon={faShoppingCart} />{' '}
+                                &nbsp;Add to Cart
                             </button>
                         </section>
 
                         <section className='descContainer'>
                             <strong>{product.name}</strong>
                             <span>
-                                <Rating rating={product.rating} />
+                                <Rating
+                                    rating={product.rating}
+                                />
                             </span>
                             <strong>{product.brand}</strong>
                             <strong>&#8377;{product.price}</strong>
@@ -113,8 +127,6 @@ const ProductScreen = ({ history, match }) => {
                                     <textarea
                                         name='commentBox'
                                         id='comment'
-                                        cols='50'
-                                        rows='3'
                                         value={comment}
                                         onChange={(e) =>
                                             setComment(e.target.value)

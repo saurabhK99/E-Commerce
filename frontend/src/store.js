@@ -8,6 +8,7 @@ import {
     productAddReducer,
     productDetailsReducer,
     productListReducer,
+    productRatingReducer,
     productRemoveReducer,
     productReviewReducer,
     productsGetListReducer,
@@ -62,7 +63,8 @@ const reducer = combineReducers({
     orderDeliverStatus: orderDeliverReducer,
     filter: filterReducer,
     orderRemoveStatus: orderRemoveReducer,
-    latestProductsList: latestProductsListReducer
+    latestProductsList: latestProductsListReducer,
+    productRatingStatus: productRatingReducer
 })
 
 const initialState = {

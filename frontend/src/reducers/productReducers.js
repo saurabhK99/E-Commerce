@@ -21,6 +21,9 @@ import {
     LATEST_PRODUCT_LIST_REQUEST,
     LATEST_PRODUCT_LIST_SUCCESS,
     LATEST_PRODUCT_LIST_FAIL,
+    PRODUCT_UPDATE_RATING_REQUEST,
+    PRODUCT_UPDATE_RATING_SUCCESS,
+    PRODUCT_UPDATE_RATING_FAIL,
 } from '../constants/productConstants'
 
 export const productListReducer = (state = { products: [] }, action) => {
@@ -137,6 +140,22 @@ export const productReviewReducer = (state = { status: {} }, action) => {
             return { loading: false, status: action.payload }
 
         case PRODUCT_REVIEW_FAIL:
+            return { loading: false, error: action.payload }
+
+        default:
+            return { ...state }
+    }
+}
+
+export const productRatingReducer = (state = { status: {} }, action) => {
+    switch (action.type) {
+        case PRODUCT_UPDATE_RATING_REQUEST:
+            return { loading: true }
+
+        case PRODUCT_UPDATE_RATING_SUCCESS:
+            return { loading: false, status: action.payload }
+
+        case PRODUCT_UPDATE_RATING_FAIL:
             return { loading: false, error: action.payload }
 
         default:

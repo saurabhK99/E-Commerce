@@ -25,3 +25,9 @@
     background-color: orange;
     color: var(--primary);
 }
+
+@media only screen and (max-width: 530px) {
+    .paginationContainer {
+        font-size: 0.7rem;
+    }
+}

@@ -127,13 +127,13 @@ const AddProductScreen = () => {
                                         setCategory(e.target.value)
                                     }
                                 >
-                                    <option value='Electronics'>
+                                    <option value='electronics'>
                                         Electronics
                                     </option>
-                                    <option value='Lifestyle'>Lifestyle</option>
-                                    <option value='Appliance'>Appliance</option>
-                                    <option value='Clothing'>Clothing</option>
-                                    <option value='Groceries'>Groceries</option>
+                                    <option value='beauty'>Beauty</option>
+                                    <option value='appliance'>Appliance</option>
+                                    <option value='clothing'>Clothing</option>
+                                    <option value='grocery'>Grocery</option>
                                 </select>
                             </td>
                         </tr>
