@@ -6,7 +6,7 @@
 ## Description
 E-Commerce website using **MERN** stack.
 
-https://user-images.githubusercontent.com/77184346/174839341-a68cc8d4-f7d8-4dd5-9bb9-e8067be44d75.mov
+https://user-images.githubusercontent.com/77184346/174841501-ab4d044d-51f3-4aa5-b8bf-d5601d73d005.mov
 
 ### Technology
 * MongoDb
