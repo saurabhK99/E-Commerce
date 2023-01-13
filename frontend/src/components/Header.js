@@ -74,7 +74,7 @@ const Header = () => {
                     </li>
 
                     <li>
-                        {userInfo && (
+                        {userInfo && userInfo.admin && (
                             <Link className='headerLink' to='/admin'>
                                 <FontAwesomeIcon icon={faUserEdit} />
                             </Link>
